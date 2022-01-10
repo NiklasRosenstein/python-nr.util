@@ -9,4 +9,4 @@ from ._optional import Optional
 from ._refreshable import Refreshable
 from ._stream import Stream
 
-__all__ = ['coalesce', 'Optional', 'Stream']
+__all__ = ['coalesce', 'Optional', 'Refreshable', 'Stream']
