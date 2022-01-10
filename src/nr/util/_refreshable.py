@@ -16,6 +16,13 @@ class Refreshable(t.Generic[T]):
     self._current = initial
     self._subscribers: t.List[Subscriber] = []
 
+  def __getstate__(self):
+    return self, (self._current, self._subscribers)
+
+  def __setstate__(self, state):
+    self._lock = threading.Lock()
+    self._current, self._subscribers = state[1]
+
   def get(self) -> T:
     with self._lock:
       return self._current
