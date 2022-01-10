@@ -22,7 +22,7 @@ class Proxy(BaseProxy[T]):
   _lazy: bool
   _cache: t.Optional[T] = None
 
-  def __init__(self, func: Supplier[T] = None, name: t.Optional[str] = None, lazy: bool = False) -> None:
+  def __init__(self, func: Supplier[T] | None = None, name: str | None = None, lazy: bool = False) -> None:
     """
     Create a new proxy object.
 
@@ -65,13 +65,13 @@ class Proxy(BaseProxy[T]):
     self._func = func  # type: ignore
 
 
-def set_value(p: t.Union[Proxy[T], T], value: T) -> None:
+def set_value(p: Proxy[T] | T, value: T) -> None:
   " Permanently override the value of a #proxy. This will turn the proxy to a lazy proxy if it is not already that. "
 
   t.cast(Proxy[T], p)._set(value)
 
 
-def bind(p: t.Union[Proxy[T], T], func: t.Optional[Supplier[T]]) -> None:
+def bind(p: Proxy[T] | T, func: Supplier[T] | None) -> None:
   """
   (Re-) bind the function for a proxy. The *func* will be called in the future when the current value of the
   proxy is required.
@@ -84,7 +84,7 @@ def is_bound(p: t.Union[Proxy[T], T]) -> bool:
   return t.cast(Proxy[T], p)._is_bound()
 
 
-def proxy(func: Supplier[T], name: t.Optional[str] = None, lazy: bool = False) -> T:
+def proxy(func: Supplier[T] | None = None, name: str | None = None, lazy: bool = False) -> T:
   """
   Create a new proxy from the given supplier. The function is typed to return an instance of the generic type
   *T*, but will in fact return a #Proxy object.
