@@ -1,5 +1,5 @@
 name: nr.util
-version: 0.2.1
+version: 0.3.0
 author: Niklas Rosenstein <rosensteinniklas@gmail.com>
 description: General purpose Python utility library.
 requirements:
