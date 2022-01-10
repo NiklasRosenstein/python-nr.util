@@ -1,0 +1,13 @@
+changes:
+- type: fix
+  component: general
+  description: make `Refreshable` picklable
+- type: fix
+  component: general
+  description: fix `AWSGILauncher` union annotation
+- type: fix
+  component: general
+  description: fix typing of `Proxy`
+- type: fix
+  component: general
+  description: fix `nr.util.proxy.bind()` and expose `nr.util.proxy.set_value()`
