@@ -11,3 +11,4 @@ changes:
 - type: fix
   component: general
   description: fix `nr.util.proxy.bind()` and expose `nr.util.proxy.set_value()`
+release_date: '2022-01-10'
