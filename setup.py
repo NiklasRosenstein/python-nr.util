@@ -16,6 +16,11 @@ else:
   long_description = None
 
 requirements = []
+extras_require = {}
+extras_require['config'] = [
+  'databind.core >=1.3.2,<2.0.0',
+]
+extras_require['test'] = []
 
 setuptools.setup(
   name = 'nr.util',
@@ -31,9 +36,9 @@ setuptools.setup(
   package_dir = {'': 'src'},
   include_package_data = True,
   install_requires = requirements,
-  extras_require = {},
+  extras_require = extras_require,
   tests_require = [],
-  python_requires = '>=3.8.0,<4.0.0',
+  python_requires = '>=3.10.0,<4.0.0',
   data_files = [],
   entry_points = {},
   cmdclass = {},
