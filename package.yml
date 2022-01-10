@@ -4,3 +4,4 @@ author: Niklas Rosenstein <rosensteinniklas@gmail.com>
 description: General purpose Python utility library.
 requirements:
 - python ^3.8
+typed: true
