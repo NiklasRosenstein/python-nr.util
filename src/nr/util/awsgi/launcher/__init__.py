@@ -26,7 +26,7 @@ else:
   union(
     union.Subtypes.chain(
       union.Subtypes.dynamic({
-        'uvicorn': lambda: __import__(__name__ + '.uvicorn', fromlist=[]).UvicornLauncher,
+        'uvicorn': lambda: __import__(__name__ + '.uvicorn', fromlist=['UvicornLauncher']).UvicornLauncher,
       }),
       union.Subtypes.entrypoint('nr.util.awsgi.launcher'),
     ),
