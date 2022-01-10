@@ -1,7 +1,7 @@
 
 import pytest
 
-from . import Arg, Safe, Unsafe
+from nr.util.safearg import Arg, Safe, Unsafe
 
 
 def test_create_arg():
