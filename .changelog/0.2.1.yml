@@ -2,3 +2,4 @@ changes:
 - type: fix
   component: general
   description: fix instantiation of `Safe` and `Unsafe`
+release_date: '2022-01-10'
