@@ -19,7 +19,7 @@ requirements = []
 
 setuptools.setup(
   name = 'nr.util',
-  version = '0.0.0',
+  version = '0.1.0',
   author = 'Niklas Rosenstein',
   author_email = 'rosensteinniklas@gmail.com',
   description = 'General purpose Python utility library.',
