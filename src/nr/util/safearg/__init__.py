@@ -13,7 +13,7 @@ class Arg(t.Generic[T]):
   """ Base class for arguments. Cannot be directly constructed. """
 
   def __init__(self, value: T) -> None:
-    if type(self) is not (Safe, Unsafe):
+    if type(self) not in (Safe, Unsafe):
       raise RuntimeError(f'cannot create object of type {type(self).__name__}')
     self._value = value
 
