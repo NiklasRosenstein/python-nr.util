@@ -62,7 +62,7 @@ class Proxy(BaseProxy[T]):
     return self._func is not None
 
   def _bind(self, func: t.Optional[Supplier[T]]) -> None:
-    self._func = func  # type: ignore
+    object.__setattr__(self, "_func", func)
 
 
 def set_value(p: Proxy[T] | T, value: T) -> None:
