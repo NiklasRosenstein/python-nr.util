@@ -1,5 +1,5 @@
 
-from nr.util.scanner import Cursor, Scanner
+from nr.util.parsing import Cursor, Scanner
 
 
 def test_seek():

@@ -1,4 +1,4 @@
 changes:
 - type: feature
   component: general
-  description: add `nr.util.scanner` module
+  description: add `nr.util.parsing` module (merged from `nr.parsing.core`)
