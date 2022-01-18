@@ -5,3 +5,6 @@ changes:
 - type: feature
   component: general
   description: add `ChainDict` and `OrderedSet`
+- type: feature
+  component: general
+  description: add `nr.util.git` and `nr.util.io`
