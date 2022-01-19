@@ -25,6 +25,8 @@ import typing as t
 if os.name == 'nt':
   import ctypes.wintypes as wintypes
   windll = ctypes.windll  # type: ignore
+  WinError = ctypes.WinError  # type: ignore
+  get_last_error = ctypes.get_last_error  # type: ignore
   class winapi:
     _WaitForSingleObject = windll.kernel32.WaitForSingleObject
     _WaitForSingleObject.restype = wintypes.DWORD
@@ -43,7 +45,7 @@ if os.name == 'nt':
       result = wintypes.DWORD()
       success = winapi._GetExitCodeProcess(handle, ctypes.byref(result))
       if not success:
-        raise ctypes.WinError(ctypes.get_last_error())
+        raise WinError(get_last_error())
       return result.value
 
     _MessageBox = windll.user32.MessageBoxW
@@ -111,7 +113,7 @@ if os.name == 'nt':
       data.hProcess = None
       result = winapi._ShellExecuteEx(ctypes.byref(data))
       if not result:
-        raise ctypes.WinError(ctypes.get_last_error())
+        raise WinError(get_last_error())
       return {'hInstApp': data.hInstApp, 'hProcess': data.hProcess}
 
 
@@ -224,13 +226,14 @@ def _elevate_windows(command, cwd, environ):
 
 
 def _elevate_windows_elevated(datadir):
+  assert os.name == 'nt'
   datafile = os.path.join(datadir, 'processdata.json')
-  with open(datafile, 'r') as fp:
-    data = json.load(fp)
+  with open(datafile, 'r') as pdata_fp:
+    data = json.load(pdata_fp)
 
   try:
     with open(data['outfile'], 'wb', 0) as fp:
-      sys.stderr = sys.stdout = io.TextIOWrapper(io.BufferedWriter(fp))
+      sys.stderr = sys.stdout = io.TextIOWrapper(fp)
       os.environ.update(data['environ'])
       return subprocess.call(data['command'], cwd=data['cwd'], stdout=fp, stderr=fp)
   except:
@@ -253,7 +256,8 @@ def main(argv=None, prog=None):
       sys.exit(1)
     sys.exit(_elevate_windows_elevated(args.windows_process_data))
   elif unknown:
-    sys.exit(elevate(unknown))
+    elevate(unknown)
+    sys.exit()
   else:
     parser.print_usage()
 

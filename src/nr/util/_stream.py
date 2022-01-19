@@ -163,7 +163,7 @@ class Stream(t.Generic[T_co], t.Iterable[T_co]):
 
     def generator():
       for it in self:
-        for element in it:
+        for element in t.cast(t.Iterable, it):
           yield element
     return Stream(generator())
 

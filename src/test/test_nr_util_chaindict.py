@@ -5,8 +5,8 @@ from nr.util import ChainDict
 def test_ChainDict():
   a = {'foo': 42}
   b = {'bar': 'spam'}
-  c = {}
-  d = ChainDict({}, a, b, c)
+  c: dict[str, str] = {}
+  d = ChainDict[str, str | int]({}, a, b, c)
 
   assert str(d) == 'ChainDict({})'.format({'foo': 42, 'bar': 'spam'})
   assert d['foo'] == a['foo']

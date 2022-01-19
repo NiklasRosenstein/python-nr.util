@@ -22,14 +22,14 @@ class BaseProxy(t.Generic[T]):
     except RuntimeError:
       raise AttributeError("__dict__")
 
-  def __repr__(self):
+  def __repr__(self) -> str:
     try:
       obj = self._get_current_object()
     except RuntimeError:
       return "<unresolvable {}.{} ({})>".format(
         type(self).__module__,
         type(self).__name__,
-        get_name(self) or '<unnamed>')
+        get_name(self) or '<unnamed>')  # type: ignore
     return repr(obj)
 
   def __bool__(self):

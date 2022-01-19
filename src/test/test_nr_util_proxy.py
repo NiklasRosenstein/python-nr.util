@@ -85,8 +85,8 @@ def test_threadlocal():
     threading.Thread(target=lambda: _run(10)),
     threading.Thread(target=lambda: _run(321)),
   ]
-  [t.start() for t in threads]
+  [t.start() for t in threads]  # type: ignore
   _run(42)
-  [t.join() for t in threads]
+  [t.join() for t in threads]  # type: ignore
 
   assert sink == set([99, 10, 321, 42])

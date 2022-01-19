@@ -8,3 +8,6 @@ extra-requirements:
   config:
     - databind.core ^1.3.2
 typed: true
+test-drivers:
+- type: pytest
+- type: mypy
