@@ -8,3 +8,6 @@ changes:
 - type: feature
   component: general
   description: add `nr.util.git` and `nr.util.io`
+- type: feature
+  component: general
+  description: add `nr.util.process`
