@@ -106,7 +106,7 @@ class SqliteDatastore:
         raise
       result = cursor.fetchone()
       if result is None:
-          raise ValueError(f'key {namespace!r}/{key!r} does not exist')
+          raise KeyError(f'{namespace} :: {key}')
       if not isinstance(result[0], bytes):
         raise RuntimeError(f'expected data to be bytes, got {type(result[0]).__name__}')
       return result[0]
@@ -172,5 +172,7 @@ class SqliteNamespace(KeyValueStore):
 
   def keys(self, prefix: str = '') -> t.Iterable[str]:
     for key, _exp in self._store.get_keys(self._namespace, prefix):
-      print('@@', key)
       yield key
+
+  def count(self, prefix: str = '') -> int:
+    raise NotImplementedError('SqliteNamespace.count() is not implemented')

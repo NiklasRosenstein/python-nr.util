@@ -9,9 +9,9 @@ def test_sqlite_datastore():
 
   assert list(ds.get_namespaces()) == ['foobar']
 
-  with pytest.raises(ValueError) as excinfo:
+  with pytest.raises(KeyError) as excinfo:
     kv.get('spam')
-  assert str(excinfo.value) == "key 'foobar'/'spam' does not exist"
+  assert str(excinfo.value) == repr("foobar :: spam")
 
   kv.set('spam', b'hello world')
   assert kv.get('spam') == b'hello world'

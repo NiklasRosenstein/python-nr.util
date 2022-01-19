@@ -48,3 +48,7 @@ class KeyValueStore(abc.ABC):
   @abc.abstractmethod
   def keys(self, prefix: str = '') -> t.Iterable[str]:
     ...
+
+  @abc.abstractmethod
+  def count(self, prefix: str = '') -> int:
+    ...
