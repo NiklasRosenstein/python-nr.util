@@ -171,6 +171,7 @@ def elevate(command: str | list[str], cwd: str | None = None, environ: t.Mapping
 
 
 def _elevate_windows(command, cwd, environ):
+  assert os.name == 'nt'
   datadir = tempfile.mkdtemp()
   try:
     # TODO: Maybe we could also use named pipes and transfer them
