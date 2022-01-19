@@ -3,6 +3,7 @@
 
 import abc
 import base64
+import dataclasses
 import pickle
 import os
 
@@ -64,3 +65,26 @@ def _pickled_app():
     return app.wsgi_app
   else:
     raise RuntimeError(f'{type(app).__name__} does not provide an asgi_app or wsgi_app')
+
+
+@dataclasses.dataclass
+class BaseAWSGIConfig:
+
+  @dataclasses.dataclass
+  class Files:
+    pidfile: str | None = None
+    stdout: str | None = None
+    stderr: str | None = None
+
+  @dataclasses.dataclass
+  class Ssl:
+    cert: str
+    key: str
+
+  host: str = '127.0.0.1'
+  port: int = 8000
+  daemonize: bool = False
+  files: Files = dataclasses.field(default_factory=Files)
+  ssl: Ssl | None = None
+  num_workers: int | None = None
+  additional_options: list[str] = dataclasses.field(default_factory=list)
