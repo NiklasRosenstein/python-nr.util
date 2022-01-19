@@ -28,7 +28,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install . mypy pytest
-    - name: Test with pytest
-      run: pytest
-    - name: Test with mypy
-      run: mypy src
+        python -m pip install shut==0.21.1
+    - name: Run tests
+      run: shut pkg test
