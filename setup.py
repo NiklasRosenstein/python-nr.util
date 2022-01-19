@@ -24,7 +24,7 @@ extras_require['test'] = []
 
 setuptools.setup(
   name = 'nr.util',
-  version = '0.3.1',
+  version = '0.4.0',
   author = 'Niklas Rosenstein',
   author_email = 'rosensteinniklas@gmail.com',
   description = 'General purpose Python utility library.',

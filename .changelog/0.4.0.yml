@@ -17,3 +17,4 @@ changes:
 - type: feature
   component: general
   description: add `nr.util.keyvalue`
+release_date: '2022-01-19'
