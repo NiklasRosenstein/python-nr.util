@@ -1,4 +1,5 @@
-dist/
-build/
-__pycache__/
+/dist/
+/build/
+/poetry.lock
+__pycache__
 *.egg-info/
