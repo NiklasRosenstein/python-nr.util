@@ -1,0 +1,9 @@
+changes:
+- type: feature
+  component: general
+  description: add `nr.util.fs` package with `atomic_swap()` and `atomic_write()`
+    functions
+- type: feature
+  component: general
+  description: add `nr.util.algorithm` package with `longest_common_substring()` function
+release_date: '2022-01-22'
