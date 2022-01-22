@@ -5,3 +5,4 @@ changes:
 - type: feature
   component: general
   description: add `longest_common_substring(*, start_only)` argument
+release_date: '2022-01-22'
