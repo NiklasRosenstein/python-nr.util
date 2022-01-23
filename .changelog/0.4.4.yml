@@ -6,3 +6,4 @@ changes:
 - type: feature
   component: general
   description: add `nr.util.digraph` package
+release_date: '2022-01-23'
