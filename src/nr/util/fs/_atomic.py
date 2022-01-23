@@ -26,11 +26,11 @@ def atomic_write(
   ...
 
 
-@contextlib.contextmanager
+@contextlib.contextmanager  # type: ignore
 def atomic_write(
   path: StrPath,
   mode: t.Literal['w', 'wb'],
-  rename_mode: t.Literal['posix', 'windows'] | None,
+  rename_mode: t.Literal['posix', 'windows'] | None = None,
 ) -> t.Iterator[t.IO]:
   """ Write to a temporarily file, then rename on file closure. If an error occurs while the context manager is active,
   the temporary file will be deleted instead and if an original file existed before it will not be modified. On
@@ -74,7 +74,7 @@ def atomic_swap(
   ...
 
 
-@contextlib.contextmanager
+@contextlib.contextmanager  # type: ignore
 def atomic_swap(
   path: StrPath,
   mode: t.Literal['w', 'wb'],
