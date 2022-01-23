@@ -1,0 +1,8 @@
+changes:
+- type: change
+  component: general
+  description: '`nr.util.algorithm.longest_common_subsequence.longest_common_subsequence`
+    should now be imported directlty instead of from `nr.util.algorithm`'
+- type: feature
+  component: general
+  description: add `nr.util.digraph` package
