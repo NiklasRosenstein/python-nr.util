@@ -12,7 +12,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.10"
 
-[tool.poetry.group.dev.dependencies]
+[tool.poetry.dev.dependencies]
 mypy = "^0.931"
 
 [tool.poetry.extras]
