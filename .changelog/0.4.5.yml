@@ -4,3 +4,4 @@ changes:
   description: '`add `Git.get_toplevel()`, `Git.is_repository()` and `Git.get_files()`,
     rename `Git.porcelain()` to `Git.get_status()` and make sure `FileMode.mode` contains
     the two-character sequence that defines the file status'
+release_date: '2022-01-24'
