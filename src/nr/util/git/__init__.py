@@ -1,7 +1,16 @@
 
+import dataclasses
 import os
 import subprocess as sp
 import typing as t
+
+
+class GitError(Exception):
+  pass
+
+
+class NoCurrentBranchError(GitError):
+  pass
 
 
 class Branch(t.NamedTuple):
@@ -119,7 +128,7 @@ class Git:
       if branch.current:
         return branch.name
 
-    raise RuntimeError('no curent branch ?')
+    raise NoCurrentBranchError(self.path)
 
   def get_remote_refs(self, remote: str) -> t.List[RefWithSha]:
     result = []
@@ -209,13 +218,14 @@ class Git:
     command = ['git', 'remote', 'add', remote, url] + (argv or [])
     self.check_call(command)
 
-  def porcelain(self) -> t.Iterable[FileStatus]:
+  def get_status(self) -> t.Iterable[FileStatus]:
     """
     Returns the file status for the working tree.
     """
 
     for line in self.check_output(['git', 'status', '--porcelain']).decode().splitlines():
-      mode, filename = line.strip().partition(' ')[::2]
+      mode = line[:2]
+      filename = line.strip().partition(' ')[-1]
       yield FileStatus(mode, filename)
 
   def commit(self, message: str, allow_empty: bool = False) -> None:
@@ -359,3 +369,24 @@ class Git:
       raise
     except sp.CalledProcessError:
       return None
+
+  def get_toplevel(self) -> str:
+    """ Return the toplevel directory of the Git repository. """
+
+    return self.check_call(['git', 'rev-parse', '--show-toplevel']).decode().strip()
+
+  def is_repository(self) -> bool:
+    """ Returns #True if the #Git.path points to a folder in a Git repository, otherwise False. """
+
+    try:
+      self.check_output(['git', 'rev-parse', '--show-toplevel'], sp.PIPE)
+      return True
+    except sp.CalledProcessError as exc:
+      if 'not a git repository' in exc.stderr.decode():
+        return False
+      raise
+
+  def get_files(self) -> t.List[str]:
+    """ Returns a list of all the files tracked in the Git repository. """
+
+    return self.check_output(['git', 'ls-files']).decode().strip().splitlines()
