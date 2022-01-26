@@ -6,3 +6,4 @@ changes:
   component: general
   description: update `load_plugin()` api (returning a dictionary and adding a `names`
     parameter)
+release_date: '2022-01-26'
