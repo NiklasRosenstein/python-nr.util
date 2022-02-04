@@ -1,7 +1,7 @@
 
 import typing as t
 
-from nr.util.function import Supplier
+from nr.util.functional import Supplier
 from nr.util.generic import T
 from ._base import BaseProxy
 

@@ -1,8 +1,7 @@
 
-import dataclasses
-import os
 import subprocess as sp
 import typing as t
+from pathlib import Path
 
 
 class GitError(Exception):
@@ -39,8 +38,8 @@ class Git:
   Utility class to interface with the Git commandline.
   """
 
-  def __init__(self, path: str = None):
-    self.path = path or os.getcwd()
+  def __init__(self, path: Path | str | None = None):
+    self.path = Path(path) if path else Path.cwd()
 
   def check_call(self, command: t.List[str], stdout: t.Optional[int] = None) -> None:
     sp.check_call(command, cwd=self.path, stdout=stdout)
@@ -52,14 +51,14 @@ class Git:
     self.check_call(['git', 'init', '.'])
 
   def clone(
-      self,
-      clone_url: str,
-      branch: str = None,
-      depth: int = None,
-      recursive: bool = False,
-      username: str = None,
-      password: str = None,
-      quiet: bool = False,
+    self,
+    clone_url: str,
+    branch: str = None,
+    depth: int = None,
+    recursive: bool = False,
+    username: str = None,
+    password: str = None,
+    quiet: bool = False,
   ) -> None:
     """
     Clone a Git repository to the *to_directory* from *clone_url*. If a relative path is
@@ -73,7 +72,7 @@ class Git:
       auth = ':'.join(t.cast(t.List[str], filter(bool, [username, password])))
       clone_url = schema + '://' + auth + '@' + remainder
 
-    command = ['git', 'clone', clone_url, self.path]
+    command = ['git', 'clone', clone_url, str(self.path)]
     if branch:
       command += ['-b', branch]
     if depth:
@@ -370,20 +369,14 @@ class Git:
     except sp.CalledProcessError:
       return None
 
-  def get_toplevel(self) -> str:
-    """ Return the toplevel directory of the Git repository. """
-
-    return self.check_call(['git', 'rev-parse', '--show-toplevel']).decode().strip()
-
-  def is_repository(self) -> bool:
-    """ Returns #True if the #Git.path points to a folder in a Git repository, otherwise False. """
+  def get_toplevel(self) -> str | None:
+    """ Return the toplevel directory of the Git repository. Returns #None if it does not appear to be a Git repo. """
 
     try:
-      self.check_output(['git', 'rev-parse', '--show-toplevel'], sp.PIPE)
-      return True
+      return self.check_output(['git', 'rev-parse', '--show-toplevel'], sp.PIPE).decode().strip()
     except sp.CalledProcessError as exc:
       if 'not a git repository' in exc.stderr.decode():
-        return False
+        return None
       raise
 
   def get_files(self) -> t.List[str]:
