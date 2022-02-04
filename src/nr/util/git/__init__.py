@@ -390,3 +390,6 @@ class Git:
     """ Returns a list of all the files tracked in the Git repository. """
 
     return self.check_output(['git', 'ls-files']).decode().strip().splitlines()
+
+  def get_config(self, option: str) -> str | None:
+    return self.check_output(['git', 'config', option]).decode().strip()
