@@ -10,6 +10,14 @@ from nr.util.generic import T
 logger = logging.getLogger(__name__)
 
 
+def load_entrypoint(group: str, name: str) -> t.Any:
+  """ Load a single entrypoint value. Raises a #RuntimeError if no such entrypoint exists. """
+
+  for ep in pkg_resources.iter_entry_points(group, name):
+    return ep.load()
+  raise RuntimeError(f'no entrypoint "{name}" in group "{group}"')
+
+
 def load_plugins_from_entrypoints(
   group: str,
   base_class: type[T],
