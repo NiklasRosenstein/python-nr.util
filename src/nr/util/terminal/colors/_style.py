@@ -122,3 +122,7 @@ class StyleManager:
       prev_text = text
 
     return prev_text
+
+  @classmethod
+  def strip_tags(cls, text: str) -> str:
+    return cls().format(text, True, lambda _, s: s)
