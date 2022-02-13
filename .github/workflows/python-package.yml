@@ -29,4 +29,4 @@ jobs:
     - name: Run pytest
       run: poetry run pytest test/
     - name: Run mypy
-      run: poetry run mypy src/
+      run: poetry run mypy src/ --namespace-packages

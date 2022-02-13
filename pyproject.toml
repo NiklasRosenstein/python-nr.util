@@ -24,7 +24,7 @@ packages = [
 
   [tool.shut.test]
   pytest = "pytest test/"
-  mypy = "mypy src/"
+  mypy = "mypy src/ --namespace-packages"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
