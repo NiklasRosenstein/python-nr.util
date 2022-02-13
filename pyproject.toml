@@ -18,6 +18,7 @@ packages = [
   [tool.poetry.dev-dependencies]
   pytest = "^6.2.5"
   mypy = "^0.931"
+  types-setuptools = "^57.4.9"
 
 [tool.shut]
 
