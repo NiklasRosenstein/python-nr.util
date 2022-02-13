@@ -1,0 +1,59 @@
+[[entries]]
+id = "5d5cc0b3-9e1d-480a-8f3d-032ab34053fe"
+type = "feature"
+description = "add `Git.get_file_contents()`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "db171aeb-7a4e-4a28-9847-422e64c42595"
+type = "feature"
+description = "add `Once` and `Consumer` to `nr.util.functional`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "75eeb190-f8b3-43b1-ad8b-110386810c5f"
+type = "feature"
+description = "add `nr.plugins.PluginRegistry`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "17911c85-9002-4433-b02f-87892c28e533"
+type = "hygiene"
+description = "rename `nr.plugins.load_plugins()` to `load_plugins_from_entrypoint()`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "df222945-4c44-4b8c-a6cf-4729d9faab2b"
+type = "feature"
+description = "add `nr.plugins.load_entrypoint()`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "28b289f3-dd71-40b5-894d-b3119198a714"
+type = "feature"
+description = "add `nr.util.fs.recurse_directory()`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "4e11c530-2019-497e-abc9-60baff7fa9da"
+type = "feature"
+description = "add `nr.util.terminal.colors` package"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "4ec3de1b-6239-4efe-a108-a9013a419c03"
+type = "feature"
+description = "add `nr.util.logging` package"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "e4642089-ed0d-4508-8f9f-3501e87c16cc"
+type = "feature"
+description = "add `nr.util.inspect` package"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "305b7271-2efc-47fa-b6fb-650b156a4ebc"
+type = "feature"
+description = "add `nr.util.scanner` module"
+author = "@NiklasRosenstein"
