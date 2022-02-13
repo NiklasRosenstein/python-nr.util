@@ -1,0 +1,7 @@
+release-date = "2022-01-22"
+
+[[entries]]
+id = "902ba703-22d1-40d7-a8d1-b6f07fc74297"
+type = "feature"
+description = "add `nr.util.fs` package with `atomic_swap()` and `atomic_write()` functions"
+author = "@NiklasRosenstein"

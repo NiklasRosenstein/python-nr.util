@@ -1,0 +1,7 @@
+release-date = "2022-01-10"
+
+[[entries]]
+id = "89031fd9-f649-437b-b726-4d42f5b2ef49"
+type = "fix"
+description = "fix instantiation of `Safe` and `Unsafe`"
+author = "@NiklasRosenstein"

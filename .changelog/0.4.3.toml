@@ -1,0 +1,13 @@
+release-date = "2022-01-22"
+
+[[entries]]
+id = "8e462dfd-e337-4201-b80e-74ff2c6e96d8"
+type = "fix"
+description = "add missing `__all__` to `nr.util.algorithm`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "28f4792d-e406-4210-976b-8b04619d5be6"
+type = "feature"
+description = "add `longest_common_substring(*, start_only)` argument"
+author = "@NiklasRosenstein"

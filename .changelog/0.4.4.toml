@@ -1,0 +1,13 @@
+release-date = "2022-01-23"
+
+[[entries]]
+id = "c4d8d84f-a489-4dcf-9d86-c84b833e50d0"
+type = "improvement"
+description = "`nr.util.algorithm.longest_common_subsequence.longest_common_subsequence` should now be imported directlty instead of from `nr.util.algorithm`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "95f17219-c3c0-48db-9790-2c116a202435"
+type = "feature"
+description = "add `nr.util.digraph` package"
+author = "@NiklasRosenstein"

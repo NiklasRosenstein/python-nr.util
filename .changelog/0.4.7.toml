@@ -1,0 +1,13 @@
+release-date = "2022-01-26"
+
+[[entries]]
+id = "433815b4-276d-4d7d-9265-bec648c8a0e1"
+type = "feature"
+description = "add `nr.util.weak` module"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "67729a93-834a-4a84-a167-b77c30d7c6fe"
+type = "breaking change"
+description = "update `load_plugin()` api (returning a dictionary and adding a `names` parameter)"
+author = "@NiklasRosenstein"

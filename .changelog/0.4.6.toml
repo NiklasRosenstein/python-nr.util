@@ -1,0 +1,7 @@
+release-date = "2022-01-25"
+
+[[entries]]
+id = "5cfbc8d7-4fa3-413b-a2d7-3d6b5c201dee"
+type = "feature"
+description = "add `nr.util.plugins` module"
+author = "@NiklasRosenstein"

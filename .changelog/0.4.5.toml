@@ -1,0 +1,7 @@
+release-date = "2022-01-24"
+
+[[entries]]
+id = "e70335a1-d246-44dd-94e8-9d3952566708"
+type = "feature"
+description = "`add `Git.get_toplevel()`, `Git.is_repository()` and `Git.get_files()`, rename `Git.porcelain()` to `Git.get_status()` and make sure `FileMode.mode` contains the two-character sequence that defines the file status"
+author = "@NiklasRosenstein"

@@ -1,0 +1,7 @@
+release-date = "2022-01-10"
+
+[[entries]]
+id = "432ed386-9c47-43f8-ba99-2e1216f1d682"
+type = "feature"
+description = "add `nr.util.safearg` module"
+author = "@NiklasRosenstein"

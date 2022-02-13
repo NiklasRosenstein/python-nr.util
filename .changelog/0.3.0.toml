@@ -1,0 +1,7 @@
+release-date = "2022-01-10"
+
+[[entries]]
+id = "e067ba8d-7615-4837-9390-3150cf613402"
+type = "feature"
+description = "add `nr.util.config` and `nr.util.awsgi`"
+author = "@NiklasRosenstein"

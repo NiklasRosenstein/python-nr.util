@@ -1,6 +1,0 @@
-changes:
-- type: feature
-  component: general
-  description: add `nr.util.fs` package with `atomic_swap()` and `atomic_write()`
-    functions
-release_date: '2022-01-22'

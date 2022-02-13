@@ -1,0 +1,37 @@
+release-date = "2022-01-19"
+
+[[entries]]
+id = "74e43d6c-eb66-40ff-bda2-d9bf42e4a6d2"
+type = "feature"
+description = "add `nr.util.parsing` module (merged from `nr.parsing.core`)"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "f385cafe-9057-4467-861c-f4d27c0ee63a"
+type = "feature"
+description = "add `ChainDict` and `OrderedSet`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "79fc29f0-aa3d-40a6-8eff-39454c8111a7"
+type = "feature"
+description = "add `nr.util.git` and `nr.util.io`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "48dda46a-3b33-4214-aba7-d01fa3abd3c7"
+type = "feature"
+description = "add `nr.util.process`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "d07b5eba-1b23-4288-aa48-52a2a75cb86a"
+type = "feature"
+description = "add `nr.util.process.Pidfile` class and `nr.util.awsgi.launcher.flask/gunicorn`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "b476d6c1-5273-4186-8fc5-17fba2180ef1"
+type = "feature"
+description = "add `nr.util.keyvalue`"
+author = "@NiklasRosenstein"

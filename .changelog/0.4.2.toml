@@ -1,0 +1,13 @@
+release-date = "2022-01-22"
+
+[[entries]]
+id = "7bad2bbf-2881-4294-90db-058e33788dc0"
+type = "feature"
+description = "add `nr.util.fs` package with `atomic_swap()` and `atomic_write()` functions"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "ecc06024-c2a2-4c08-afbd-5898e81c77bd"
+type = "feature"
+description = "add `nr.util.algorithm` package with `longest_common_substring()` function"
+author = "@NiklasRosenstein"

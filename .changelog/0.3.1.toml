@@ -1,0 +1,25 @@
+release-date = "2022-01-10"
+
+[[entries]]
+id = "92141948-15c4-4e3d-b988-25c980ee5d20"
+type = "fix"
+description = "make `Refreshable` picklable"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "4b12c7db-4584-45f9-a9e9-b2c253ee5d92"
+type = "fix"
+description = "fix `AWSGILauncher` union annotation"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "241ff88c-7f53-46b4-b365-d6a57c9736db"
+type = "fix"
+description = "fix typing of `Proxy`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "cac6bdef-f391-4650-9981-65e994284ead"
+type = "fix"
+description = "fix `nr.util.proxy.bind()` and expose `nr.util.proxy.set_value()`"
+author = "@NiklasRosenstein"
