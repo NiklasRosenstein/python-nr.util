@@ -48,12 +48,11 @@ class OptionalWeakProperty(WeakProperty[t.Optional[T]]):
       return None
 
 
-if t.TYPE_CHECKING:
-  @t.overload
-  def weak_property(attr_name: str, once: bool = False, optional: t.Literal[False] = False) -> T: ...
-  @t.overload
-  def weak_property(attr_name: str, once: bool = False, optional: t.Literal[True] = True) -> T | None: ...
+@t.overload
+def weak_property(attr_name: str, once: bool = False, optional: t.Literal[False] = False) -> T: ...
 
+@t.overload
+def weak_property(attr_name: str, once: bool = False, optional: t.Literal[True] = True) -> T | None: ...
 
 def weak_property(attr_name: str, once: bool = False, optional: bool = False) -> T | None:
   return t.cast(T, WeakProperty(attr_name, once) if optional else OptionalWeakProperty(attr_name, once))

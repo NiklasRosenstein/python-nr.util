@@ -19,7 +19,7 @@ class Once(Supplier[T_co]):
     if not self._cached:
       self._value = self._supplier()
       self._cached = True
-    return self._value
+    return t.cast(T_co, self._value)
 
   def get(self, resupply: bool = False) -> T_co:
     if resupply:

@@ -122,7 +122,7 @@ def parse_color(color_string: str) -> Color:
     if len(color_string) == 4:
       parts = [x*2 for x in parts]
     try:
-      parts = map(lambda x: int(x, 16), parts)
+      parts = [int(x, 16) for x in parts]
     except ValueError:
       pass
     else:

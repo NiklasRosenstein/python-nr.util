@@ -37,7 +37,7 @@ class Scanner(t.Generic[T]):
     if self:
       self.index += 1
 
-  def ensure_advancing(self, strict_forward: bool = True) -> t.Iterator[str]:
+  def ensure_advancing(self, strict_forward: bool = True) -> t.Iterator[T]:
     """ A utility iterator that yields the current line of the scanner at each step of the iteration. After each
     step, it ensures that the Scanner was at least moved forward by one index, or modified at all if *strict* is
     disabled. """

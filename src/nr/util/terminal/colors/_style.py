@@ -23,7 +23,7 @@ class Style:
     self,
     fg: Color | str | None = None,
     bg: Color | str | None = None,
-    attrs: list[Attribute | str] | str | None = None,
+    attrs: t.Sequence[Attribute | str] | str | None = None,
   ) -> None:
     """ The constructor allows you to specify all arguments also as strings. The foreground and background are parsed
     with #parse_color(). The *attrs* can be a comma-separated string. """
@@ -97,7 +97,7 @@ class StyleManager:
 
     return style
 
-  def format(self, text: str, safe: bool = False, repl: t.Callable[[str, str], str] | None = None) -> None:
+  def format(self, text: str, safe: bool = False, repl: t.Callable[[str, str], str] | None = None) -> str:
     """ Formats text that contains HTML-style tags that represent styles in the style manager. In addition, special
     tags `<fg={color}>`, `<bg={color}>` or <attr={attrs}>` can be used to manually specify the exact styling of the
     text and the can be combined (such as `<bg=bright red;attr=underline>`). If *safe* is set to `True`, tags
