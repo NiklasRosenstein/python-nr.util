@@ -8,3 +8,10 @@ def recurse_directory(path: Path) -> t.Iterator[Path]:
     yield item
     if item.is_dir():
       yield from recurse_directory(item)
+
+
+def walk_up(path: Path) -> t.Iterator[Path]:
+  prev = None
+  while path != prev:
+    yield path
+    prev, path = path, path.parent
