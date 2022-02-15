@@ -27,6 +27,7 @@ typed = true
   [tool.slam.test]
   pytest = "pytest test/"
   mypy = "mypy src/ --namespace-packages"
+  check = "slam check"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
