@@ -3,3 +3,9 @@ id = "b7a0f86b-e861-4375-99ff-67318fae5c40"
 type = "feature"
 description = "add `nr.util.fs.walk_up()` and `nr.util.fs.is_relative_to()`"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "a5376fe1-45da-4f64-aa39-768ab7e200bb"
+type = "feature"
+description = "add `Once.__bool__()`"
+author = "@NiklasRosenstein"

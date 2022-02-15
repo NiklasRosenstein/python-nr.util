@@ -15,6 +15,9 @@ class Once(Supplier[T_co]):
   def __repr__(self) -> str:
     return f'Once({self._supplier!r})'
 
+  def __bool__(self) -> bool:
+    return self._cached
+
   def __call__(self) -> T_co:
     if not self._cached:
       self._value = self._supplier()
