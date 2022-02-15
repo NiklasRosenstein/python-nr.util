@@ -1,0 +1,5 @@
+[[entries]]
+id = "f5c10fd5-9058-4055-a06c-5999bec0911d"
+type = "improvement"
+description = "add missing color `GRAY` to `nr.util.terminal.colors._color.SgrColorName`"
+author = "@NiklasRosenstein"

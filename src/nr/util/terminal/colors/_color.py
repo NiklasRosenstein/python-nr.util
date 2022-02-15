@@ -23,6 +23,7 @@ class SgrColorName(enum.Enum):
   MAGENTA = 5
   CYAN = 6
   WHITE = 7
+  GRAY = 8
   DEFAULT = 9
 
 
