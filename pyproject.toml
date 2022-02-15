@@ -20,6 +20,7 @@ packages = [
   pytest = "^6.2.5"
   mypy = "^0.931"
   types-setuptools = "^57.4.9"
+  slam-cli = "^1.0.0a4"
 
 [tool.slam]
 typed = true
