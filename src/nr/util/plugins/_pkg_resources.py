@@ -29,7 +29,7 @@ def load_entrypoint(group: str | type[T], name: str) -> t.Any | type[T]:
   """ Load a single entrypoint value. Raises a #RuntimeError if no such entrypoint exists. """
 
   if isinstance(group, type):
-    group_name = group.ENTRYPOINT
+    group_name = group.ENTRYPOINT  # type: ignore
   else:
     group_name = group
 
@@ -64,7 +64,7 @@ def iter_entrypoints(group: str | type[T]) -> _Iter_Entrypoints_1 | _Iter_Entryp
   """ Loads all entrypoints from the given group. """
 
   if isinstance(group, type):
-    group_name = group.ENTRYPOINT
+    group_name = group.ENTRYPOINT  # type: ignore
   else:
     group_name = group
 

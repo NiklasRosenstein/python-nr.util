@@ -5,6 +5,7 @@ description = "General purpose Python utility library."
 authors = ["Niklas Rosenstein <rosensteinniklas@gmail.com>"]
 license = "MIT"
 readme = "readme.md"
+homepage = "https://github.com/NiklasRosenstein/python-nr.util"
 packages = [
   { include="nr/util", from="src" }
 ]
@@ -20,9 +21,10 @@ packages = [
   mypy = "^0.931"
   types-setuptools = "^57.4.9"
 
-[tool.shut]
+[tool.slam]
+typed = true
 
-  [tool.shut.test]
+  [tool.slam.test]
   pytest = "pytest test/"
   mypy = "mypy src/ --namespace-packages"
 
