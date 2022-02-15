@@ -1,0 +1,5 @@
+[[entries]]
+id = "db7dd87b-4b86-49cf-ae96-c7e237f984a9"
+type = "fix"
+description = "`StyleManager.format()` now matches tags that span across newlines"
+author = "@NiklasRosenstein"

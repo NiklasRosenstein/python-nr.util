@@ -115,8 +115,7 @@ class StyleManager:
     upper_limit = 15
     prev_text = text
     for _ in range(upper_limit):
-      match = re.match(self.TAG_EXPR, text)
-      text = re.sub(self.TAG_EXPR, _regex_sub, text)
+      text = re.sub(self.TAG_EXPR, _regex_sub, text, flags=re.S | re.M)
       if prev_text == text:
         break
       prev_text = text
