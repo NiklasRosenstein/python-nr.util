@@ -26,7 +26,5 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: python -m pip install poetry && poetry install
-    - name: Run pytest
-      run: poetry run pytest test/
-    - name: Run mypy
-      run: poetry run mypy src/ --namespace-packages
+    - name: Run tests
+      run: poetry run slam test
