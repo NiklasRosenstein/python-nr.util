@@ -9,3 +9,9 @@ id = "a5376fe1-45da-4f64-aa39-768ab7e200bb"
 type = "feature"
 description = "add `Once.__bool__()`"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "26d07d61-bfd4-43c0-9206-6e14fb8e5e1d"
+type = "breaking change"
+description = "remove `load_plugins_from_entrypoints()`, add instead `load_entrypoints()` and update `load_entrypoint()`"
+author = "@NiklasRosenstein"

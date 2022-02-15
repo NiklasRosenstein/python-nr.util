@@ -9,69 +9,78 @@ from nr.util.generic import T
 
 logger = logging.getLogger(__name__)
 
+# NOTE (@NiklasRosenstein): I wished we could use a TypeVar bound to a protocol instead of T, but mypy does
+#   not seem to like it.
 
-def load_entrypoint(group: str, name: str) -> t.Any:
+
+class NoSuchEntrypointError(RuntimeError):
+  pass
+
+
+@t.overload
+def load_entrypoint(group: str, name: str) -> t.Any: ...
+
+
+@t.overload
+def load_entrypoint(group: type[T], name: str) -> type[T]: ...
+
+
+def load_entrypoint(group: str | type[T], name: str) -> t.Any | type[T]:
   """ Load a single entrypoint value. Raises a #RuntimeError if no such entrypoint exists. """
 
-  for ep in pkg_resources.iter_entry_points(group, name):
-    return ep.load()
-  raise RuntimeError(f'no entrypoint "{name}" in group "{group}"')
+  if isinstance(group, type):
+    group_name = group.ENTRYPOINT
+  else:
+    group_name = group
+
+  for ep in pkg_resources.iter_entry_points(group_name, name):
+    value = ep.load()
+    break
+  else:
+    raise NoSuchEntrypointError(f'no entrypoint "{name}" in group "{group}"')
+
+  if isinstance(group, type):
+    if not isinstance(value, type):
+      raise TypeError(f'entrypoint "{name}" in group "{group}" is not a type (found "{type(value).__name__}")')
+    if not issubclass(value, group):  # type: ignore
+      raise TypeError(f'entrypoint "{name}" in group "{group}" is not a subclass of {group.__name__}')
+
+  return value
 
 
-def load_plugins_from_entrypoints(
-  group: str,
-  base_class: type[T],
-  constructor: t.Callable[[type[T]], T] | None = None,
-  do_raise: bool = False,
-  names: list[str] | None = None,
-  filter: t.Callable[[pkg_resources.EntryPoint], bool] | None = None,
-) -> dict[str, T]:
-  """ Loads plugins from an entrypoint group. All entrypoints must point to a class of the specified *base_class*.
-  If *do_raise* is `True` and an entrypoint does not point to a subclass of the given type, a #RuntimeError is
-  raised, otherwise a warning is printed. If the entrypoint cannot be imported and *do_raise* is `False`, a warning
-  will be printed as well.
+_Iter_Entrypoints_1 = t.Iterator[pkg_resources.EntryPoint]
+_Iter_Entrypoints_2 = t.Iterator[tuple[str, t.Callable[[], type[T]]]]
 
-  The *constructor* will be used to create instances of the *base_class*. If it is omitted, the instances will be
-  created without arguments. If the construction fails and *do_raise* is `False`, a warning will be printed.
 
-  By passing a predicate for the *filter* argument, you can filter which entry points in the group are considered
-  for loading in the first place. """
+@t.overload
+def iter_entrypoints(group: str) -> _Iter_Entrypoints_1: ...
 
-  if not isinstance(base_class, type):
-    raise TypeError(f'base_class must be a type, got {type(base_class).__name__}')
 
-  result = {}
-  for ep in pkg_resources.iter_entry_points(group):
-    if names is not None and ep.name not in names:
-      continue
-    if filter is not None and not filter(ep):
-      continue
+@t.overload
+def iter_entrypoints(group: type[T]) -> _Iter_Entrypoints_2: ...
 
-    try:
-      cls = ep.load()
-    except ImportError:
-      if do_raise:
-        raise
-      logger.exception(f'Unable to load entrypoint "%s" due to ImportError', ep)
-      continue
 
-    if not isinstance(cls, type) or not issubclass(cls, base_class):
-      message = f'Entrypoint "%s" does not point to a %s subclass (got value: %r)'
-      if do_raise:
-        raise RuntimeError(message % (ep, base_class.__name__, cls))
-      logger.error(message, ep, base_class.__name__, cls)
-      continue
+def iter_entrypoints(group: str | type[T]) -> _Iter_Entrypoints_1 | _Iter_Entrypoints_2:
+  """ Loads all entrypoints from the given group. """
 
-    try:
-      result[ep.name] = constructor(cls) if constructor else cls()
-    except Exception:
-      message = f'Instance from entrypoint "%s" could not be created'
-      if do_raise:
-        raise RuntimeError(message % (ep,))
-      logger.exception(message, ep)
+  if isinstance(group, type):
+    group_name = group.ENTRYPOINT
+  else:
+    group_name = group
 
-  if names is not None and (missing_plugins := set(names) - result.keys()):
-    msg = f'missing plugin{"" if len(missing_plugins) == 1 else "s"} in entrypoint group "{group}": {missing_plugins}'
-    raise RuntimeError(msg)
+  def _make_loader(ep: pkg_resources.EntryPoint) -> t.Callable[[], type[T]]:
+    def loader():
+      assert isinstance(group, type)
+      value = ep.load()
+      if not isinstance(value, type):
+        raise TypeError(f'entrypoint "{ep.name}" in group "{group}" is not a type (found "{type(value).__name__}")')
+      if not issubclass(value, group):  # type: ignore
+        raise TypeError(f'entrypoint "{ep.name}" in group "{group}" is not a subclass of {group.__name__}')
+      return value
+    return loader
 
-  return result
+  for ep in pkg_resources.iter_entry_points(group_name):
+    if isinstance(group, type):
+      yield ep.name, _make_loader(ep)
+    else:
+      yield ep
