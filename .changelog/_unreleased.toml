@@ -21,3 +21,9 @@ id = "b850e33f-2972-4c39-8590-2993c6715ee7"
 type = "deprecation"
 description = "move `nr.util.coalesce()` to `nr.util.functional.coalesce()`, the original function is still available but marked as deprecated"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "3525affc-170e-49cd-9f68-0112c79e4bfa"
+type = "feature"
+description = "add `nr.util.functional.assure()`"
+author = "@NiklasRosenstein"
