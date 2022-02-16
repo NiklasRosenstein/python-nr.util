@@ -1,0 +1,5 @@
+[[entries]]
+id = "8a8b6201-9724-4ef2-915e-18bb9fdd091a"
+type = "improvement"
+description = "add support for Python 3.7-3.9 in addition to the already existing 3.10 support"
+author = "@NiklasRosenstein"
