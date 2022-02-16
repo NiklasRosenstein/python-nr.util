@@ -32,7 +32,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install
-      run: pip install . && pip freeze && poetry install --only=dev
+      run: pip install . && pip freeze && poetry install --no-root -E dev
 
     - name: Run tests
       run: slam test
