@@ -15,3 +15,9 @@ id = "43b33901-a9d8-4bae-8c85-5b3055483d8a"
 type = "improvement"
 description = "`Scanner.advance()` now returns `T | None`"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "b850e33f-2972-4c39-8590-2993c6715ee7"
+type = "deprecation"
+description = "move `nr.util.coalesce()` to `nr.util.functional.coalesce()`, the original function is still available but marked as deprecated"
+author = "@NiklasRosenstein"
