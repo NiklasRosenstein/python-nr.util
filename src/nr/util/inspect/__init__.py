@@ -7,6 +7,7 @@ import sys
 class Callsite:
   filename: str
   lineno: int
+  code_name: str
   name: str | None
 
 
@@ -17,6 +18,6 @@ def get_callsite(stackdepth: int = 1) -> Callsite:
 
   frame = sys._getframe(stackdepth + 1)
   try:
-    return Callsite(frame.f_code.co_filename, frame.f_lineno, frame.f_globals.get('__name__'))
+    return Callsite(frame.f_code.co_filename, frame.f_lineno, frame.f_code.co_name, frame.f_globals.get('__name__'))
   finally:
     del frame
