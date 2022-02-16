@@ -9,7 +9,7 @@ homepage = "https://github.com/NiklasRosenstein/python-nr.util"
 packages = [{ include="nr/util", from="src" }]
 
   [tool.poetry.dependencies]
-  python = "^3.10"
+  python = "^3.7"
   deprecated = "^1.2.0"
 
   [tool.poetry.extras]
