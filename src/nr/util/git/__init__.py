@@ -1,11 +1,10 @@
 
-from base64 import decode
+from __future__ import annotations
+
 import os
 import subprocess as sp
-from sys import stderr
 import typing as t
 from pathlib import Path
-from unittest.case import doModuleCleanups
 
 
 class GitError(Exception):

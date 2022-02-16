@@ -1,18 +1,20 @@
 
+from __future__ import annotations
 import contextlib
 import os
 import tempfile
 import typing as t
+import typing_extensions as te
 from pathlib import Path
 
-StrPath = str | Path
+StrPath: te.TypeAlias = 'str | Path'
 
 
 @t.overload
 def atomic_write(
   path: StrPath,
-  mode: t.Literal['w'],
-  rename_mode: t.Literal['posix', 'windows'] | None,
+  mode: te.Literal['w'],
+  rename_mode: te.Literal['posix', 'windows'] | None,
 ) -> t.ContextManager[t.TextIO]:
   ...
 
@@ -20,8 +22,8 @@ def atomic_write(
 @t.overload
 def atomic_write(
   path: StrPath,
-  mode: t.Literal['wb'],
-  rename_mode: t.Literal['posix', 'windows'] | None,
+  mode: te.Literal['wb'],
+  rename_mode: te.Literal['posix', 'windows'] | None,
 ) -> t.ContextManager[t.BinaryIO]:
   ...
 
@@ -29,8 +31,8 @@ def atomic_write(
 @contextlib.contextmanager  # type: ignore
 def atomic_write(
   path: StrPath,
-  mode: t.Literal['w', 'wb'],
-  rename_mode: t.Literal['posix', 'windows'] | None = None,
+  mode: te.Literal['w', 'wb'],
+  rename_mode: te.Literal['posix', 'windows'] | None = None,
 ) -> t.Iterator[t.IO]:
   """ Write to a temporarily file, then rename on file closure. If an error occurs while the context manager is active,
   the temporary file will be deleted instead and if an original file existed before it will not be modified. On
@@ -59,7 +61,7 @@ def atomic_write(
 @t.overload
 def atomic_swap(
   path: StrPath,
-  mode: t.Literal['w'],
+  mode: te.Literal['w'],
   always_revert: bool,
 ) -> t.ContextManager[t.TextIO]:
   ...
@@ -68,7 +70,7 @@ def atomic_swap(
 @t.overload
 def atomic_swap(
   path: StrPath,
-  mode: t.Literal['wb'],
+  mode: te.Literal['wb'],
   always_revert: bool,
 ) -> t.ContextManager[t.BinaryIO]:
   ...
@@ -77,7 +79,7 @@ def atomic_swap(
 @contextlib.contextmanager  # type: ignore
 def atomic_swap(
   path: StrPath,
-  mode: t.Literal['w', 'wb'],
+  mode: te.Literal['w', 'wb'],
   always_revert: bool = False,
 ) -> t.Iterator[t.IO]:
   """ Similar to #atomic_write(), only that this function writes to the *path* directlty instead of a temporary file,

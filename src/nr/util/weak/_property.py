@@ -1,6 +1,9 @@
 
 
+from __future__ import annotations
+
 import typing as t
+import typing_extensions as te
 import weakref
 
 from nr.util.generic import T
@@ -49,10 +52,10 @@ class OptionalWeakProperty(WeakProperty[t.Optional[T]]):
 
 
 @t.overload
-def weak_property(attr_name: str, once: bool = False, optional: t.Literal[False] = False) -> T: ...
+def weak_property(attr_name: str, once: bool = False, optional: te.Literal[False] = False) -> T: ...
 
 @t.overload
-def weak_property(attr_name: str, once: bool = False, optional: t.Literal[True] = True) -> T | None: ...
+def weak_property(attr_name: str, once: bool = False, optional: te.Literal[True] = True) -> T | None: ...
 
 def weak_property(attr_name: str, once: bool = False, optional: bool = False) -> T | None:
   return t.cast(T, WeakProperty(attr_name, once) if optional else OptionalWeakProperty(attr_name, once))

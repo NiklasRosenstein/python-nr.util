@@ -1,8 +1,10 @@
 
 """ Provides a logging formatter that understands color hints in the message and decorates it with """
 
+from __future__ import annotations
+
 import logging
-import typing as t
+import typing_extensions as te
 
 from nr.util.terminal.colors import StyleManager
 from nr.util.singleton import NotSet
@@ -32,7 +34,7 @@ class TerminalColorFormatter(logging.Formatter):
     else:
       return self.styles.format(message, True)
 
-  def install(self, target: t.Literal['tty', 'notty'] | None = None) -> None:
+  def install(self, target: te.Literal['tty', 'notty'] | None = None) -> None:
     """ Install the formatter on stream handlers on all handlers of the root logger that are attached to a TTY,
     or otherwise on all that are not attached to a TTY based on the *target* value. If no value is specified, it
     will install into TTY-attached stream handlers if #styles is set. """

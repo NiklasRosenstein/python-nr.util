@@ -18,6 +18,7 @@ packages = [{ include="nr/util", from="src" }]
   [tool.poetry.dev-dependencies]
   pytest = "^6.2.5"
   mypy = "^0.931"
+  typing-extensions = "^4.1.0"
   types-deprecated = "^1.2.0"
   types-setuptools = "^57.4.9"
 
@@ -26,7 +27,7 @@ typed = true
 
   [tool.slam.test]
   pytest = "pytest test/"
-  mypy = "mypy src/ --namespace-packages"
+  mypy = "MYPYPATH=src mypy src --namespace-packages --explicit-package-bases"
   check = "slam check"
 
 [build-system]

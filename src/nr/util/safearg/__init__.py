@@ -4,7 +4,10 @@ Utilities to mark values safe or unsafe, for example for the purpose of logging 
 Note that anything accepting #Arg instances must explicitly implement support.
 """
 
+from __future__ import annotations
+
 import typing as t
+import typing_extensions as te
 
 from nr.util.generic import T
 
@@ -24,10 +27,10 @@ class Arg(t.Generic[T]):
   def value(self) -> T:
     return self._value
 
-  def is_safe(self) -> t.TypeGuard['Safe']:
+  def is_safe(self) -> te.TypeGuard['Safe']:
     return isinstance(self, Safe)
 
-  def is_unsafe(self) -> t.TypeGuard['Unsafe']:
+  def is_unsafe(self) -> te.TypeGuard['Unsafe']:
     return isinstance(self, Unsafe)
 
 

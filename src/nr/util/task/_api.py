@@ -4,6 +4,7 @@ import enum
 import logging
 import types
 import typing as t
+import typing_extensions as te
 
 from nr.util.generic import T
 
@@ -124,7 +125,7 @@ class TaskCallbacks(abc.ABC):
 
   def on(
     self,
-    state: t.Union[TaskStatus, t.Sequence[TaskStatus], t.Literal['start'], t.Literal['end']],
+    state: t.Union[TaskStatus, t.Sequence[TaskStatus], te.Literal['start'], te.Literal['end']],
     callback: TaskCallback,
     once: bool = True,
     group: t.Optional[str] = None,

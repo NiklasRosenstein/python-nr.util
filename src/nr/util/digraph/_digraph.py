@@ -1,3 +1,6 @@
+
+from __future__ import annotations
+
 import dataclasses
 import typing as t
 import weakref
@@ -169,7 +172,7 @@ class NodesView(Mapping[K, N]):
     g._leafs.pop(key, None)
 
 
-class EdgesView(Mapping[tuple[K, K], E]):
+class EdgesView(Mapping['tuple[K, K]', E]):
 
   def __init__(self, g: DiGraph[K, t.Any, E]) -> None:
     self._g = weakref.ref(g)

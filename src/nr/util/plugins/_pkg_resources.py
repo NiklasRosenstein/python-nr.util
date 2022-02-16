@@ -1,9 +1,12 @@
 
 """ Helpers to implement a plugin infrastructure in Python. """
 
+from __future__ import annotations
+
 import logging
 import pkg_resources
 import typing as t
+import typing_extensions as te
 
 from nr.util.generic import T
 
@@ -48,8 +51,8 @@ def load_entrypoint(group: str | type[T], name: str) -> t.Any | type[T]:
   return value
 
 
-_Iter_Entrypoints_1 = t.Iterator[pkg_resources.EntryPoint]
-_Iter_Entrypoints_2 = t.Iterator[tuple[str, t.Callable[[], type[T]]]]
+_Iter_Entrypoints_1: te.TypeAlias = 't.Iterator[pkg_resources.EntryPoint]'
+_Iter_Entrypoints_2: te.TypeAlias = 't.Iterator[tuple[str, t.Callable[[], type[T]]]]'
 
 
 @t.overload

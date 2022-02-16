@@ -1,6 +1,8 @@
 
 """ A key-value store implementation based on sqlite3. """
 
+from __future__ import annotations
+
 import contextlib
 import math
 import sqlite3
@@ -81,7 +83,7 @@ class SqliteDatastore:
         if 'no such table' in str(exc):
           raise ValueError(f'namespace {namespace!r} does not exist')
         raise
-      yield from t.cast(t.Iterator[tuple[str, int | None]], _fetch_all(cursor))
+      yield from t.cast(t.Iterator['tuple[str, int | None]'], _fetch_all(cursor))
 
   def _ensure_namespace(self, cursor: sqlite3.Cursor, namespace: str) -> None:
     self._validate_namespace(namespace)

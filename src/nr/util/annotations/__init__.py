@@ -1,14 +1,17 @@
 
 """ A set of helper functions that make it easy to attach arbitrary data to functions or classes. """
 
+from __future__ import annotations
+
 import types
 import typing as t
+import typing_extensions as te
 
 from nr.util.generic import T
 
 _ANNOTATION_MEMBER_NAME = '__nr_util_annotations__'
 
-Annotateable = types.FunctionType | type | t.Any
+Annotateable: te.TypeAlias = 'types.FunctionType | type | t.Any'
 
 
 def add_annotation(obj: Annotateable, annotation_base_type: t.Type[T], annotation: T, front: bool = False) -> None:
