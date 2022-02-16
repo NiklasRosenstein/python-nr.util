@@ -1,12 +1,13 @@
 
+from __future__ import annotations
+
 import typing as t
-from collections.abc import Callable, MutableMapping
 from ._api import KeyValueStore
 
 V = t.TypeVar('V')
 V_Plain = t.TypeVar('V_Plain', bound=t.Union[int, float, str])
-_Encoder = Callable[[V], bytes]
-_Decoder = Callable[[bytes], V]
+_Encoder = t.Callable[[V], bytes]
+_Decoder = t.Callable[[bytes], V]
 
 
 def _default_encoder(v: V) -> bytes:
@@ -19,7 +20,7 @@ def _default_decoder(t: t.Type[V]) -> _Decoder:
   return _decoder
 
 
-class MappingAdapter(MutableMapping[str, V]):
+class MappingAdapter(t.MutableMapping[str, V]):
   """
   Adapter for interacting with a #KeyValueStore as a #Mapping. The default constructor supports plain datatypes
   as values to represent an encoder/decoder.

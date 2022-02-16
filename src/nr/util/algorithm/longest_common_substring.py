@@ -1,15 +1,16 @@
 
+from __future__ import annotations
+
 import typing as t
-from collections.abc import Sequence
 from nr.util.generic import T
 
 
 def longest_common_substring(
-  seq1: Sequence[T],
-  seq2: Sequence[T],
-  *args: Sequence[T],
+  seq1: t.Sequence[T],
+  seq2: t.Sequence[T],
+  *args: t.Sequence[T],
   start_only: bool = False,
-) -> Sequence[T]:
+) -> t.Sequence[T]:
   """ Finds the longest common contiguous sequence of elements in *seq1* and *seq2* and returns it. """
 
   longest: tuple[int, int] = (0, 0)

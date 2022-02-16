@@ -4,7 +4,6 @@ from __future__ import annotations
 import dataclasses
 import typing as t
 import weakref
-from collections.abc import Mapping
 
 from nr.util.singleton import NotSet
 
@@ -129,7 +128,7 @@ class _Node(t.Generic[K, N]):
   successors: dict[K, None]
 
 
-class NodesView(Mapping[K, N]):
+class NodesView(t.Mapping[K, N]):
 
   def __init__(self, g: DiGraph[K, N, t.Any]) -> None:
     self._g = weakref.ref(g)
@@ -172,7 +171,7 @@ class NodesView(Mapping[K, N]):
     g._leafs.pop(key, None)
 
 
-class EdgesView(Mapping['tuple[K, K]', E]):
+class EdgesView(t.Mapping['tuple[K, K]', E]):
 
   def __init__(self, g: DiGraph[K, t.Any, E]) -> None:
     self._g = weakref.ref(g)

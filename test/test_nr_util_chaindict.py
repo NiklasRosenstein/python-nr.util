@@ -1,4 +1,6 @@
 
+from __future__ import annotations
+
 from nr.util import ChainDict
 
 
@@ -6,7 +8,7 @@ def test_ChainDict():
   a = {'foo': 42}
   b = {'bar': 'spam'}
   c: dict[str, str] = {}
-  d = ChainDict[str, str | int]({}, a, b, c)
+  d: ChainDict[str, str | int] = ChainDict({}, a, b, c)
 
   assert str(d) == 'ChainDict({})'.format({'foo': 42, 'bar': 'spam'})
   assert d['foo'] == a['foo']
