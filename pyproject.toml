@@ -20,6 +20,7 @@ packages = [
   [tool.poetry.dev-dependencies]
   pytest = "^6.2.5"
   mypy = "^0.931"
+  types-deprecated = "^1.2.0"
   types-setuptools = "^57.4.9"
 
 [tool.slam]
