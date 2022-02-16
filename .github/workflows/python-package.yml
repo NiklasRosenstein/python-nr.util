@@ -26,11 +26,8 @@ jobs:
       with:
         default: "${{ matrix.python-tooling-version }}"
         command: |
-          pip install -U pip
-          pip install pipx
-          pipx install poetry==1.2.0a2
-          #pipx install slam-cli==1.0.0a12
-          pipx install git+https://github.com/NiklasRosenstein/slam.git
+          pip install -q -U pip pipx
+          pipx install slam-cli==1.0.0a13
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
@@ -38,7 +35,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install
-      run: slam install --no-venv-check
+      run: slam install --no-venv-check -q
 
     - name: Run tests
       run: slam test
