@@ -37,7 +37,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install
-      run: slam install
+      run: slam install --no-venv-check
 
     - name: Run tests
       run: slam test
