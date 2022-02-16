@@ -9,3 +9,9 @@ id = "cbaa6890-ba28-4412-ba5f-097f68609efe"
 type = "deprecation"
 description = "deprecate `Scanner.ensure_advancing()` in favor of `Scanner.safe_iter()`"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "43b33901-a9d8-4bae-8c85-5b3055483d8a"
+type = "improvement"
+description = "`Scanner.advance()` now returns `T | None`"
+author = "@NiklasRosenstein"

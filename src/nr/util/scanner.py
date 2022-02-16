@@ -34,9 +34,12 @@ class Scanner(t.Generic[T]):
     else:
       raise ValueError('no next element for the scanner to move to')
 
-  def advance(self) -> None:
+  def advance(self) -> T | None:
     if self:
       self.index += 1
+    if self.index < len(self.sequence):
+      return self.sequence[self.index]
+    return None
 
   @deprecated('use Scanner.safe_iter() instead')
   def ensure_advancing(self, strict_forward: bool = True) -> t.Iterator[T]:
