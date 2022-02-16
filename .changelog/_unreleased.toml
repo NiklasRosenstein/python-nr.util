@@ -1,0 +1,11 @@
+[[entries]]
+id = "2cb0aa04-096f-4086-b049-c7a727730899"
+type = "feature"
+description = "add `Scanner(start_index)` parameter"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "cbaa6890-ba28-4412-ba5f-097f68609efe"
+type = "deprecation"
+description = "deprecate `Scanner.ensure_advancing()` in favor of `Scanner.safe_iter()`"
+author = "@NiklasRosenstein"
