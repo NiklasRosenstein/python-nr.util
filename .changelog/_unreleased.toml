@@ -1,0 +1,5 @@
+[[entries]]
+id = "a743f3ec-3f9d-44de-a9ed-0a11a2e9bc06"
+type = "fix"
+description = "`Git.get_file_contents()` now ensures that a relative path is passed to Git"
+author = "@NiklasRosenstein"

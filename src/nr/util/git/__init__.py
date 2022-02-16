@@ -1,5 +1,6 @@
 
 from base64 import decode
+import os
 import subprocess as sp
 from sys import stderr
 import typing as t
@@ -393,6 +394,9 @@ class Git:
   def get_file_contents(self, file: str, revision: str) -> bytes:
     """ Returns the contents of a file at the given revision. Raises a #FileNotFoundError if the file did not
     exist at the revision. """
+
+
+    file = os.path.relpath(file, str(self.path))
 
     try:
       return self.check_output(['git', 'show', f'{revision}:{file}'], stderr=sp.PIPE)
