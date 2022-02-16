@@ -17,14 +17,19 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.7", "3.8", "3.9", "3.10", "3.x"]
+        python-tooling-version: ["3.10.2"]
 
     steps:
     - uses: actions/checkout@v2
 
     - uses: gabrielfalcao/pyenv-action@v9
       with:
-        default: 3.10.2
-        command: which pip && which pipx && pip install -U pip && pip install pipx && pipx install poetry==1.2.0a2 && pipx install slam-cli==1.0.0a11
+        default: "${{ matrix.python-tooling-version }}"
+        command: |
+          pip install -U pip
+          pip install pipx
+          pipx install poetry==1.2.0a2
+          pipx install slam-cli==1.0.0a12
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
@@ -32,7 +37,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install
-      run: pip install . && pip freeze && poetry env info && poetry env use system && poetry env info && poetry install --only=dev --no-root
+      run: slam install
 
     - name: Run tests
       run: slam test
