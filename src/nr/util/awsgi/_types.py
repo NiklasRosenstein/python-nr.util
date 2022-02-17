@@ -1,14 +1,14 @@
 
-import typing as t
+import typing_extensions as te
 
 
-class ASGIApp(t.Protocol):
+class ASGIApp(te.Protocol):
 
   def __call__(self, scope, receive, send):
     raise NotImplementedError
 
 
-class WSGIApp(t.Protocol):
+class WSGIApp(te.Protocol):
 
   def __call__(self, environ, start_response):
     raise NotImplementedError

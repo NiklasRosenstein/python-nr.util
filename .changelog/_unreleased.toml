@@ -1,0 +1,5 @@
+[[entries]]
+id = "931baec5-85ac-44b0-b368-2ff333bb2702"
+type = "fix"
+description = "fix Python 3.7-3.9 compatibility for a lod of submodules"
+author = "@NiklasRosenstein"

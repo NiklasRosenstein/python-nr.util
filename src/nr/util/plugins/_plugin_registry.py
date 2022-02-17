@@ -1,8 +1,9 @@
 
+from __future__ import annotations
+
 import logging
 import types
 import typing as t
-import warnings
 
 from nr.util.generic import T
 

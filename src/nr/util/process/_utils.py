@@ -1,4 +1,6 @@
 
+from __future__ import annotations
+
 import errno
 import grp
 import os

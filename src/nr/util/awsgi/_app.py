@@ -1,5 +1,5 @@
 
-import typing as t
+from __future__ import annotations
 
 from ._types import ASGIApp, WSGIApp
 

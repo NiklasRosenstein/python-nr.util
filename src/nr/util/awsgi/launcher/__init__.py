@@ -1,6 +1,8 @@
 
 """ ASGI/WSGI application launchers. """
 
+from __future__ import annotations
+
 import abc
 import base64
 import dataclasses
