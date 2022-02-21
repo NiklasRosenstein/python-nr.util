@@ -1,0 +1,5 @@
+[[entries]]
+id = "fc4d235b-dc41-47fe-be15-215d55336678"
+type = "fix"
+description = "add missing import of `typing as t` to `nr.util.scanner` module (not a horrible bug because the module was using `__future__.annotations`)"
+author = "@NiklasRosenstein"
