@@ -15,3 +15,9 @@ id = "c2a57067-d067-4e36-a290-fbe7a0cbc848"
 type = "breaking change"
 description = "`nr.util.parsing.Scanner` class no longer exposes the `index`, `colno` and `lineno` attributes, read from `Scanner.pos` instead"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "6207eda2-d5f9-4902-90dd-b2f83e31463b"
+type = "deprecation"
+description = "moved `nr.util.scanner.Scanner` to new `nr.util.iter` module under the name `SequenceWalker`; old API is still accessible but deprecated"
+author = "@NiklasRosenstein"
