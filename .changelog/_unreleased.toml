@@ -9,3 +9,9 @@ id = "bda8dc05-6cf9-4126-b3c3-b8f30b213be6"
 type = "breaking change"
 description = "`nr.util.parsing.Scanner` now counts column offsets in a line starting with 1"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "c2a57067-d067-4e36-a290-fbe7a0cbc848"
+type = "breaking change"
+description = "`nr.util.parsing.Scanner` class no longer exposes the `index`, `colno` and `lineno` attributes, read from `Scanner.pos` instead"
+author = "@NiklasRosenstein"

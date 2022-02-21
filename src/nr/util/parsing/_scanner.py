@@ -35,10 +35,10 @@ class Scanner:
     self._colno = 1
 
   def __repr__(self) -> str:
-    return f'<Scanner at {self.lineno}:{self.colno}>'
+    return f'<Scanner at {self._lineno}:{self._colno}>'
 
   def __bool__(self) -> bool:
-    return self.index < len(self.text)
+    return self._index < len(self.text)
 
   def __setattr__(self, key: str, value: t.Any) -> None:
     if key == '_index':
@@ -52,20 +52,8 @@ class Scanner:
     object.__setattr__(self, key, value)
 
   @property
-  def colno(self) -> int:
-    return self._colno
-
-  @property
-  def lineno(self) -> int:
-    return self._lineno
-
-  @property
-  def index(self) -> int:
-    return self._index
-
-  @property
   def pos(self) -> Cursor:
-    return Cursor(self.index, self.lineno, self.colno)
+    return Cursor(self._index, self._lineno, self._colno)
 
   @pos.setter
   def pos(self, cursor: Cursor) -> None:
@@ -79,8 +67,8 @@ class Scanner:
   def char(self) -> str:
     """ Returns the current character. Returns an empty string at the end of the text. """
 
-    if self.index >= 0 and self.index < len(self.text):
-      return self.text[self.index]
+    if self._index >= 0 and self._index < len(self.text):
+      return self.text[self._index]
     else:
       return type(self.text)()
 
@@ -100,7 +88,7 @@ class Scanner:
     if mode == Seek.END:
       offset = len(self.text) + offset
     elif mode == Seek.CUR:
-      offset = self.index + offset
+      offset = self._index + offset
 
     offset = max(0, min(len(self.text), offset))
 
@@ -124,7 +112,7 @@ class Scanner:
   def next(self) -> str:
     """ Move on to the next character in the text. """
 
-    if self.index >= len(self.text):
+    if self._index >= len(self.text):
       return ''
 
     char = self.char
@@ -139,7 +127,7 @@ class Scanner:
   def readline(self) -> str:
     """ Reads a full line from the scanner and returns it. """
 
-    start = end = self.index
+    start = end = self._index
     while end < len(self.text):
       if self.text[end] == '\n':
         end += 1
@@ -148,10 +136,10 @@ class Scanner:
     result = self.text[start:end]
     self._index = end
     if result.endswith('\n'):
-      self.colno = 0
-      self.lineno += 1
+      self._colno = 0
+      self._lineno += 1
     else:
-      self.colno += end - start
+      self._colno += end - start
     return result
 
   def match(self, regex: t.Union[str, 're.Pattern'], flags: int = 0, *,
@@ -163,14 +151,14 @@ class Scanner:
 
     if isinstance(regex, str):
       regex = re.compile(regex, flags)
-    match = (regex.search if _search else regex.match)(self.text, self.index)
+    match = (regex.search if _search else regex.match)(self.text, self._index)
     if not match:
       return None
     start, end = match.start(), match.end()
     if not _search:
-      assert start == self.index, (start, self.index)
+      assert start == self._index, (start, self._index)
     else:
-      start = self.index
+      start = self._index
     lines = self.text.count('\n', start, end)
     self._index = end
     if lines:

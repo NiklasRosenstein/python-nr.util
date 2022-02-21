@@ -73,7 +73,7 @@ def test_seek_long_text():
 def test_match():
   s = Scanner('foobar')
   assert not s.match('bar')
-  assert s.index == 0
+  assert s.pos.offset == 0
 
   m = s.match('.oo')
   assert m is not None
@@ -83,7 +83,7 @@ def test_match():
   m = s.match('.*')
   assert m is not None
   assert m.start() == 3
-  assert s.index == 6
+  assert s.pos.offset == 6
   assert m.group(0) == 'bar'
 
 
@@ -93,4 +93,4 @@ def test_search():
   assert m is not None
   assert m.start() == 3
   assert m.group(0) == 'bar'
-  assert s.index == 6
+  assert s.pos.offset == 6
