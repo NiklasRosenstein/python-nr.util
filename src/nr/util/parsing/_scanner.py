@@ -30,15 +30,38 @@ class Scanner:
 
   def __init__(self, text: str) -> None:
     self.text = text
-    self.index = 0
-    self.lineno = 1
-    self.colno = 1
+    self._index = 0
+    self._lineno = 1
+    self._colno = 1
 
   def __repr__(self) -> str:
     return f'<Scanner at {self.lineno}:{self.colno}>'
 
   def __bool__(self) -> bool:
     return self.index < len(self.text)
+
+  def __setattr__(self, key: str, value: t.Any) -> None:
+    if key == '_index':
+      min_value = 0
+    elif key in ('_lineno', '_colno'):
+      min_value = 1
+    else:
+      min_value = None
+    if min_value is not None and value < min_value:
+      raise RuntimeError(f'{key} cannot be set below {min_value}')
+    object.__setattr__(self, key, value)
+
+  @property
+  def colno(self) -> int:
+    return self._colno
+
+  @property
+  def lineno(self) -> int:
+    return self._lineno
+
+  @property
+  def index(self) -> int:
+    return self._index
 
   @property
   def pos(self) -> Cursor:
@@ -50,7 +73,7 @@ class Scanner:
 
     if not isinstance(cursor, Cursor):
       raise TypeError(f'expected Cursor object {type(cursor).__name__}')
-    self.index, self.lineno, self.colno = cursor
+    self._index, self._lineno, self._colno = cursor
 
   @property
   def char(self) -> str:
@@ -96,7 +119,7 @@ class Scanner:
         current_offset = newline_idx + 1
         lineno += 1
 
-    self.index, self.lineno, self.colno = current_offset, lineno, colno
+    self._index, self._lineno, self._colno = current_offset, lineno, colno
 
   def next(self) -> str:
     """ Move on to the next character in the text. """
@@ -106,11 +129,11 @@ class Scanner:
 
     char = self.char
     if char == '\n':
-      self.lineno += 1
-      self.colno = 1
+      self._lineno += 1
+      self._colno = 1
     else:
-      self.colno += 1
-    self.index += 1
+      self._colno += 1
+    self._index += 1
     return self.char
 
   def readline(self) -> str:
@@ -123,7 +146,7 @@ class Scanner:
         break
       end += 1
     result = self.text[start:end]
-    self.index = end
+    self._index = end
     if result.endswith('\n'):
       self.colno = 0
       self.lineno += 1
@@ -145,16 +168,16 @@ class Scanner:
       return None
     start, end = match.start(), match.end()
     if not _search:
-      assert start == self.index
+      assert start == self.index, (start, self.index)
     else:
       start = self.index
     lines = self.text.count('\n', start, end)
-    self.index = end
+    self._index = end
     if lines:
-      self.colno = end - self.text.rfind('\n', start, end) - 1
-      self.lineno += lines
+      self._colno = end - self.text.rfind('\n', start, end)
+      self._lineno += lines
     else:
-      self.colno += end - start
+      self._colno += end - start
     return match
 
   def search(self, regex: t.Union[str, 're.Pattern'], flags: int = 0) -> t.Optional['re.Match']:

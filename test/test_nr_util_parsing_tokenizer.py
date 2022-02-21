@@ -36,7 +36,7 @@ def test_calculate_example():
   with pytest.raises(ValueError) as excinfo:
     assert calculate('3 ++ 5 - 1') == 7
   assert str(excinfo.value) == "unexpected token Token(type='operator', value='+', "\
-      "pos=Cursor(offset=3, line=1, column=3))"
+      "pos=Cursor(offset=3, line=1, column=4))"
 
 
 def test_tokenize():
@@ -62,5 +62,5 @@ def test_next_sentinel():
   ruleset.rule('a', rules.regex_extract('a+'))
 
   tok = Tokenizer(ruleset, 'aaaa')
-  assert tok.next({'a', 'eof'}) == Token('a', 'aaaa', Cursor(0, 1, 0), False)
-  assert tok.next({'a', 'eof'}) == Token('eof', '', Cursor(4, 1, 4), True)
+  assert tok.next({'a', 'eof'}) == Token('a', 'aaaa', Cursor(0, 1, 1), False)
+  assert tok.next({'a', 'eof'}) == Token('eof', '', Cursor(4, 1, 5), True)

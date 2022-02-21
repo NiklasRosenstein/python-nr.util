@@ -17,7 +17,7 @@ def regex(pattern: str, *, at_line_start_only: bool = False) -> TokenExtractor['
   """
 
   def _impl(scanner: 'Scanner') -> t.Optional['re.Match']:
-    if at_line_start_only and scanner.pos.column != 0:
+    if at_line_start_only and scanner.pos.column != 1:
       return None
     match = scanner.match(pattern)
     if match is None:
