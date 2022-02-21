@@ -21,3 +21,9 @@ id = "6207eda2-d5f9-4902-90dd-b2f83e31463b"
 type = "deprecation"
 description = "moved `nr.util.scanner.Scanner` to new `nr.util.iter` module under the name `SequenceWalker`; old API is still accessible but deprecated"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "9d5e9d88-729b-4976-8721-05798f0c4455"
+type = "feature"
+description = "add `nr.util.parsing.Cursor.get_line_begin()`"
+author = "@NiklasRosenstein"

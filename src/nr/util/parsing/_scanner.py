@@ -16,6 +16,10 @@ class Cursor(t.NamedTuple):
   line: int
   column: int
 
+  def get_line_begin(self) -> Cursor:
+    """ Returns a cursor pointing to the beginning of the current line. """
+    return Cursor(self.offset - self.column + 1, self.line, 1)
+
 
 class Seek(enum.Enum):
   SET = enum.auto()
