@@ -4,6 +4,8 @@ Provides the #Scanner class which is convenient for scanning through items of a 
 in a text.
 """
 
+from __future__ import annotations
+
 import enum
 import re
 import typing as t
@@ -30,7 +32,7 @@ class Scanner:
     self.text = text
     self.index = 0
     self.lineno = 1
-    self.colno = 0
+    self.colno = 1
 
   def __repr__(self) -> str:
     return f'<Scanner at {self.lineno}:{self.colno}>'
@@ -59,7 +61,7 @@ class Scanner:
     else:
       return type(self.text)()
 
-  def seek(self, offset: int, mode: t.Union[str, Seek] = Seek.SET) -> None:  # NOSONAR
+  def seek(self, offset: int, mode: t.Literal['set', 'cur', 'end'] | Seek = Seek.SET) -> None:
     """
     Moves the cursor of the Scanner to or by *offset* depending on the *mode*. The method is
     similar to a file's `seek()` method, but ensures that the line and column counts are tracked
@@ -68,83 +70,44 @@ class Scanner:
 
     if isinstance(mode, str):
       mode = Seek[mode.upper()]
-
     if mode not in Seek:
       raise ValueError(f'invalid mode: {mode!r}')
 
     # Translate the other modes into the 'set' mode.
     if mode == Seek.END:
       offset = len(self.text) + offset
-      mode = Seek.SET
     elif mode == Seek.CUR:
       offset = self.index + offset
-      mode = Seek.SET
-    assert mode == Seek.SET
 
-    if offset < 0:
-      offset = 0
-    elif offset > len(self.text):
-      offset = len(self.text) + 1
+    offset = max(0, min(len(self.text), offset))
 
-    if self.index == offset:
-      return
+    # Start counting from scratch.
+    current_offset = 0
+    colno = 1
+    lineno = 1
+    while current_offset != offset:
+      newline_idx = self.text.find('\n', current_offset)
+      if newline_idx >= offset or newline_idx < 0:
+        left_newline_idx = self.text.rfind('\n', None, newline_idx if newline_idx >= 0 else len(self.text))
+        colno = offset + 1 if left_newline_idx < 0 else offset - left_newline_idx
+        current_offset = offset
+        break
+      else:
+        current_offset = newline_idx + 1
+        lineno += 1
 
-    # Update line/column counts. Figure which path is shorter:
-    # 1) Start counting from the beginning of the file,
-    if offset <= abs(self.index - offset):
-      text, index, lineno, colno = self.text, 0, 1, 0
-      while index != offset:
-        # Find the next newline in the string.
-        nli = text.find('\n', index)
-        if nli >= offset or nli < 0:
-          colno = offset - index
-          index = offset
-          break
-        else:
-          colno = 0
-          lineno += 1
-          index = nli + 1
-
-    # 2) or step from the current position of the cursor.
-    else:
-      text, index, lineno, colno = self.text, self.index, self.lineno, self.colno
-
-      if offset < index:  # backwards
-        while index != offset:
-          nli = text.rfind('\n', 0, index)
-          if nli < 0 or nli <= offset:
-            if text[offset] == '\n':
-              assert (offset - nli) == 0, (offset, nli)
-              nli = text.rfind('\n', 0, index-1)
-              lineno -= 1
-            colno = offset - nli - 1
-            index = offset
-            break
-          else:
-            lineno -= 1
-            index = nli - 1
-      else:  # forwards
-        while index != offset:
-          nli = text.find('\n', index)
-          if nli < 0 or nli >= offset:
-            colno = offset - index
-            index = offset
-          else:
-            lineno += 1
-            index = nli + 1
-
-    assert lineno >= 1
-    assert colno >= 0
-    assert index == offset
-    self.index, self.lineno, self.colno = index, lineno, colno
+    self.index, self.lineno, self.colno = current_offset, lineno, colno
 
   def next(self) -> str:
     """ Move on to the next character in the text. """
 
+    if self.index >= len(self.text):
+      return ''
+
     char = self.char
     if char == '\n':
       self.lineno += 1
-      self.colno = 0
+      self.colno = 1
     else:
       self.colno += 1
     self.index += 1
