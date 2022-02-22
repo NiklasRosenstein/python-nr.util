@@ -9,6 +9,7 @@ from __future__ import annotations
 import enum
 import re
 import typing as t
+import typing_extensions as te
 
 
 class Cursor(t.NamedTuple):
@@ -76,7 +77,7 @@ class Scanner:
     else:
       return type(self.text)()
 
-  def seek(self, offset: int, mode: t.Literal['set', 'cur', 'end'] | Seek = Seek.SET) -> None:
+  def seek(self, offset: int, mode: te.Literal['set', 'cur', 'end'] | Seek = Seek.SET) -> None:
     """
     Moves the cursor of the Scanner to or by *offset* depending on the *mode*. The method is
     similar to a file's `seek()` method, but ensures that the line and column counts are tracked

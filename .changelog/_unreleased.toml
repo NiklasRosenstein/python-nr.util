@@ -1,0 +1,5 @@
+[[entries]]
+id = "823dd444-2c38-471c-ab70-573a82888ef4"
+type = "fix"
+description = "fix incompatibilities in `nr.util.parsing` and `nr.util.text` for Python 3.7 and 3.8"
+author = "@NiklasRosenstein"

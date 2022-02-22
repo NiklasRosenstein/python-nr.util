@@ -3,7 +3,7 @@
 import io
 import typing as t
 
-SubstRange = tuple[int, int, str]
+SubstRange = t.Tuple[int, int, str]
 
 
 def substitute_ranges(text: str, ranges: t.Iterable[SubstRange], is_sorted: bool = False) -> str:
