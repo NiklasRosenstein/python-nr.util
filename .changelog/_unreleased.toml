@@ -3,3 +3,9 @@ id = "fc4d235b-dc41-47fe-be15-215d55336678"
 type = "fix"
 description = "add missing import of `typing as t` to `nr.util.scanner` module (not a horrible bug because the module was using `__future__.annotations`)"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "6827f0f4-ed12-41b0-8c27-7c813d699f7d"
+type = "feature"
+description = "add `nr.util.text` package with `substitute_ranges()` function"
+author = "@NiklasRosenstein"
