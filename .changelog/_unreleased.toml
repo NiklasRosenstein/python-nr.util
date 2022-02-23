@@ -9,3 +9,9 @@ id = "f93c97cf-5256-4187-8255-56a34b405fc3"
 type = "feature"
 description = "add `nr.util.functional.supplier_get()`"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "25c610f3-c15e-401a-b7f6-f18210a28923"
+type = "fix"
+description = "add `typing-extensions` as runtime dependency"
+author = "@NiklasRosenstein"
