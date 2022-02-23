@@ -29,7 +29,7 @@ typed = true
 
   [tool.slam.test]
   pytest = "pytest test/"
-  mypy = "MYPYPATH=src mypy src --namespace-packages --explicit-package-bases"
+  mypy = "MYPYPATH=src mypy src test --namespace-packages --explicit-package-bases"
   check = "slam check"
 
 [build-system]
