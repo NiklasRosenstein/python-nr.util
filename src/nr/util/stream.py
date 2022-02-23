@@ -8,7 +8,7 @@ from nr.util.generic import T, T_co, U, R
 from nr.util.singleton import NotSet
 
 if t.TYPE_CHECKING:
-  from nr.util import Optional
+  from nr.util.optional import Optional
 
 Aggregator = t.Callable[[T, U], T]
 Collector = t.Callable[[t.Iterable[T]], R]
@@ -242,7 +242,7 @@ class Stream(t.Generic[T_co], t.Iterable[T_co]):
     Returns the first element of the stream as an `Optional`.
     """
 
-    from nr.util import Optional
+    from nr.util.optional import Optional
     return Optional(self.first())
 
   def flatmap(self, func: t.Callable[[T_co], t.Iterable[R]]) -> 'Stream[R]':

@@ -1,7 +1,7 @@
 
 from __future__ import annotations
 
-from nr.util import ChainDict
+from nr.util.chaindict import ChainDict
 
 
 def test_ChainDict():

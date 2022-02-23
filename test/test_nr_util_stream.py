@@ -3,7 +3,7 @@ import pytest
 import typing as t
 
 from numbers import Number
-from nr.util import Stream
+from nr.util.stream import Stream
 
 
 def test_stream_module_members():
@@ -56,10 +56,7 @@ def test_concat() -> None:
 def test_concat_generic_typing() -> None:
   from nr.util.generic import T
   def _concat_func(values: t.List[t.List[T]]) -> t.List[T]:
-    reveal_type(Stream(values))
-    reveal_type(Stream(values).concat())
     return Stream(values).concat().collect()
-
 
 
 def test_of_type():

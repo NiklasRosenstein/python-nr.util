@@ -4,7 +4,7 @@ import typing as t
 from nr.util.generic import T, R
 
 if t.TYPE_CHECKING:
-  from nr.util import Stream
+  from nr.util.stream import Stream
 
 
 class Optional(t.Generic[T]):
@@ -47,7 +47,7 @@ class Optional(t.Generic[T]):
     return self.stream().flatmap(f)
 
   def stream(self) -> 'Stream[T]':
-    from nr.util import Stream
+    from nr.util.stream import Stream
     if self._value is None:
       return Stream()
     return Stream([self._value])

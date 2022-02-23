@@ -1,0 +1,5 @@
+[[entries]]
+id = "26ef3030-4804-4220-8697-f767dfbf95cd"
+type = "deprecation"
+description = "`Stream`, `ChainDict`, `Optional`, `OrderedSet`, `Refreshable` were moved into respective public submodules, access from the toplevel is deprecated"
+author = "@NiklasRosenstein"

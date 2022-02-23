@@ -29,7 +29,7 @@ class OrderedSet(t.MutableSet[T]):
     return OrderedSet(reversed(self._content))
 
   def __eq__(self, other: t.Any) -> bool:
-    if type(other) is OrderedSet:
+    if isinstance(other, OrderedSet):
       return len(self) == len(other) and list(self) == list(other)
     return False
 

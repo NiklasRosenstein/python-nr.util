@@ -1,5 +1,5 @@
 
-from nr.util import OrderedSet
+from nr.util.orderedset import OrderedSet
 
 
 def test_OrderedSet():
