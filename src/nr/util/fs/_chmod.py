@@ -25,7 +25,7 @@ def flags(flags: int, modstring: str) -> int:
       target = c
       direction = None  # Need a - or + after group specifier.
       continue
-    if c in 'rwx' and direction in '+-':
+    if c in 'rwx' and direction and direction in '+-':
       if target == 'a':
         mask = functools.reduce(operator.or_, mapping[c])
       else:
@@ -50,7 +50,7 @@ def repr(flags: int) -> str:
   return ''.join(template[i] if flags&x else '-' for i, x in enumerate(order))
 
 
-def update(path: t.Union[str, Path], modstring: str) -> int:
+def update(path: t.Union[str, Path], modstring: str) -> None:
   """ Updates the mode of the *path* in a `chmod` like fashion. """
 
   flags = flags(os.stat(path).st_mode, modstring)

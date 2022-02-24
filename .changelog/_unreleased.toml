@@ -3,3 +3,9 @@ id = "038f5d2b-09b6-4c54-8919-2a2728a1c1ad"
 type = "improvement"
 description = "`nr.util.fs.is_relative_to()` now falls back to the buitlin implementation available from 3.9"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "400edbe9-5531-46a4-8bfd-036d84579e7f"
+type = "fix"
+description = "fix type hints in `nr.util.fs._chmod`"
+author = "@NiklasRosenstein"
