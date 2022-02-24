@@ -2,7 +2,7 @@
 """ General purpose utility library. """
 
 __author__ = 'Niklas Rosenstein <rosensteinniklas@gmail.com>'
-__version__ = "0.7.4"
+__version__ = "0.7.5"
 
 
 # Backwards compatibility
