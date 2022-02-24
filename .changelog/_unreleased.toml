@@ -1,0 +1,5 @@
+[[entries]]
+id = "07f2f281-11e7-4bd5-b025-bf38384d6fc7"
+type = "fix"
+description = "`is_relative_to()` should also use alternative impl"
+author = "@NiklasRosenstein"
