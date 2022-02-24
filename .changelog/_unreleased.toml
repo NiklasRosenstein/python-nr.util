@@ -3,3 +3,9 @@ id = "26ef3030-4804-4220-8697-f767dfbf95cd"
 type = "deprecation"
 description = "`Stream`, `ChainDict`, `Optional`, `OrderedSet`, `Refreshable` were moved into respective public submodules, access from the toplevel is deprecated"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "5c4291e2-4ca4-4534-9c6e-18f2f34eefbe"
+type = "feature"
+description = "add `nr.util.fs.chmod` module"
+author = "@NiklasRosenstein"
