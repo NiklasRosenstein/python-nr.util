@@ -3,3 +3,9 @@ id = "07f2f281-11e7-4bd5-b025-bf38384d6fc7"
 type = "fix"
 description = "`is_relative_to()` should also use alternative impl"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "5c9192b7-7a5d-4ce7-a4a0-02a587fe6bfb"
+type = "fix"
+description = "fix `nr.util.fs.chmod.update()`"
+author = "@NiklasRosenstein"

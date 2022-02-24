@@ -53,5 +53,4 @@ def repr(flags: int) -> str:
 def update(path: t.Union[str, Path], modstring: str) -> None:
   """ Updates the mode of the *path* in a `chmod` like fashion. """
 
-  flags = flags(os.stat(path).st_mode, modstring)
-  os.chmod(path, flags)
+  os.chmod(path, flags(os.stat(path).st_mode, modstring))
