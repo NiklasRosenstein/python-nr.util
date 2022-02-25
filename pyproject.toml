@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nr.util"
-version = "0.7.5"
+version = "0.7.6"
 description = "General purpose Python utility library."
 authors = ["Niklas Rosenstein <rosensteinniklas@gmail.com>"]
 license = "MIT"
