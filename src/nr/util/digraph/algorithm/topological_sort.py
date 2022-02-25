@@ -1,9 +1,10 @@
 
 import typing as t
 from nr.util.digraph import DiGraph, E, K, N
+from nr.util.types import Comparable
 
 
-def topological_sort(graph: DiGraph[K, N, E]) -> t.Iterator[K]:
+def topological_sort(graph: DiGraph[K, N, E], sorting_key: t.Callable[[K], Comparable] | None = None) -> t.Iterator[K]:
   """ Calculate the topological order for elements in the *graph*.
 
   @raises RuntimeError: If there is a cycle in the graph. """
@@ -18,7 +19,7 @@ def topological_sort(graph: DiGraph[K, N, E]) -> t.Iterator[K]:
     yield from roots
     roots = {
       k: None
-      for n in roots for k in sorted(graph.successors(n))  # type: ignore[type-var]
+      for n in roots for k in sorted(graph.successors(n), key=sorting_key)  # type: ignore[type-var]
       if not graph.predecessors(k) - seen
     }.keys()
 
