@@ -3,3 +3,9 @@ id = "bd42a70d-3ee1-4dc1-a185-4481a13556e6"
 type = "feature"
 description = "add `nr.util.re`"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "279e2f1f-4704-456e-8b8c-d2c6da6db2e7"
+type = "feature"
+description = "move `nr.parsing.date` into `nr.util.date` package"
+author = "@NiklasRosenstein"

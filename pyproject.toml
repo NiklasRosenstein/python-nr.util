@@ -19,9 +19,11 @@ packages = [{ include="nr/util", from="src" }]
   [tool.poetry.dev-dependencies]
   "databind.json" = "^1.3.2"
   mypy = "^0.931"
+  pandas = "*"
   pytest = "^6.2.5"
   PyYAML = "*"
   types-deprecated = "^1.2.0"
+  types-python-dateutil = "*"
   types-setuptools = "^57.4.9"
 
 [tool.slam]
