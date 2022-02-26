@@ -3,7 +3,7 @@ import datetime
 import typing as t
 from dataclasses import dataclass, field
 
-from nr.parsing.date.options import DatetimeComponent
+from nr.util.date.options import DatetimeComponent
 from .format import _datetime_format, date_format, datetime_format, time_format
 
 

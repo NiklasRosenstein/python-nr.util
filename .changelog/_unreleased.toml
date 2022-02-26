@@ -1,0 +1,5 @@
+[[entries]]
+id = "3053b2d4-cc13-4648-8ead-d905c53d0653"
+type = "fix"
+description = "further fixes from code relocated into `nr.util`"
+author = "@NiklasRosenstein"

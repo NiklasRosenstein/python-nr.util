@@ -1,7 +1,7 @@
 
 import datetime
 import pytest
-from nr.parsing.date import ISO_8601, duration
+from nr.util.date import ISO_8601, duration
 from samples import SAMPLES  # type: ignore[import]
 
 ISO8601_DATETIME_SAMPLES = SAMPLES[SAMPLES.tags.apply(lambda x: 'iso8601' in x) &

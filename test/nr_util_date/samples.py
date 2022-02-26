@@ -1,7 +1,7 @@
 
 import datetime
 import pandas as pd  # type: ignore[import]
-from nr.parsing.date.duration import duration
+from nr.util.date.duration import duration
 
 # NOTE(NiklasRosenstein): Some formats below are commented out because they are not supported
 #   by the stdlib strptime() (specifically the `+hh` and `-hh` timezone format), and that breaks

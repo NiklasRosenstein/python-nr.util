@@ -25,6 +25,7 @@ packages = [{ include="nr/util", from="src" }]
   types-deprecated = "^1.2.0"
   types-python-dateutil = "*"
   types-setuptools = "^57.4.9"
+  types-PyYAML = "*"
 
 [tool.slam]
 typed = true
