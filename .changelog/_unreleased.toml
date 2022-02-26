@@ -1,0 +1,5 @@
+[[entries]]
+id = "2aedf772-1312-4c17-b795-b534c373fa5f"
+type = "fix"
+description = "fix use of `nr.util.re` (as opposed to old `nr.utils.re` package)"
+author = "@NiklasRosenstein"

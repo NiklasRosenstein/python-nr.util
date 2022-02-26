@@ -2,7 +2,7 @@
 import datetime
 import typing as t
 from dataclasses import dataclass
-from nr.utils.re import MatchAllError, match_all
+from nr.util.re import MatchFullError, match_full
 
 if t.TYPE_CHECKING:
   import dateutil.relativedelta
@@ -98,7 +98,7 @@ class duration:
     fields = {}
 
     try:
-      for number, unit in (x.groups() for x in match_all(r'(\d+)(D|W|M|Y)', part_one)):
+      for number, unit in (x.groups() for x in match_full(r'(\d+)(D|W|M|Y)', part_one)):
         number = int(number)
         if unit == 'Y':
           fields['years'] = number
@@ -109,7 +109,7 @@ class duration:
         elif unit == 'D':
           fields['days'] = number
 
-      for number, unit in (x.groups() for x in match_all(r'(\d+)(S|H|M)', part_two)):
+      for number, unit in (x.groups() for x in match_full(r'(\d+)(S|H|M)', part_two)):
         number = int(number)
         if unit == 'H':
           fields['hours'] = number
@@ -118,7 +118,7 @@ class duration:
         elif unit == 'S':
           fields['seconds'] = number
 
-    except MatchAllError:
+    except MatchFullError:
       raise ValueError('Not an ISO 8601 duration string: {!r}'.format(s))
 
     return cls(**fields)
