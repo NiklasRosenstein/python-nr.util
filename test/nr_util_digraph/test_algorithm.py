@@ -3,7 +3,7 @@ import pytest
 from nr.util.digraph import DiGraph
 from nr.util.digraph.algorithm.remove_with_predecessors import remove_with_predecessors
 from nr.util.digraph.algorithm.topological_sort import topological_sort
-from test_nr_util_digraph import diamond_cross_graph, diamond_graph  # type: ignore
+from test_digraph import diamond_cross_graph, diamond_graph  # type: ignore
 
 
 def test_topological_sort(diamond_graph: DiGraph):
