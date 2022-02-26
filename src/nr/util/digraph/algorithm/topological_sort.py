@@ -4,7 +4,7 @@ from nr.util.digraph import DiGraph, E, K, N
 from nr.util.types import Comparable
 
 
-def topological_sort(graph: DiGraph[K, N, E], sorting_key: t.Callable[[K], Comparable] | None = None) -> t.Iterator[K]:
+def topological_sort(graph: DiGraph[K, N, E], sorting_key: t.Optional[t.Callable[[K], Comparable]] = None) -> t.Iterator[K]:
   """ Calculate the topological order for elements in the *graph*.
 
   @raises RuntimeError: If there is a cycle in the graph. """
