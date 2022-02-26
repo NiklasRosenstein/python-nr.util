@@ -19,7 +19,7 @@ def topological_sort(graph: DiGraph[K, N, E], sorting_key: t.Callable[[K], Compa
     yield from roots
     roots = {
       k: None
-      for n in roots for k in sorted(graph.successors(n), key=sorting_key)  # type: ignore[type-var]
+      for n in roots for k in sorted(graph.successors(n), key=sorting_key)  # type: ignore
       if not graph.predecessors(k) - seen
     }.keys()
 
