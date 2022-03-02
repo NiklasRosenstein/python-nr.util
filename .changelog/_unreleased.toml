@@ -1,0 +1,5 @@
+[[entries]]
+id = "8c620503-2ca4-46aa-a81f-f9a30d0928bb"
+type = "fix"
+description = "`Git.get_branches()` no longer returns the `(HEAD detached at <sha>)` branch, this will have `Git.get_current_branch_name()` raise a `NoCurrentBranchError` if the repository is currently in such a state"
+author = "@NiklasRosenstein"

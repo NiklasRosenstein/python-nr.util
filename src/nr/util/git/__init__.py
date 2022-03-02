@@ -110,7 +110,10 @@ class Git:
       if line.startswith('*'):
         line = line[1:]
         current = True
-      results.append(Branch(line.strip(), current))
+      line = line.strip()
+      if line.startswith('(HEAD'):
+        continue
+      results.append(Branch(line, current))
 
     return results
 
