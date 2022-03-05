@@ -1,0 +1,11 @@
+[[entries]]
+id = "a21211e8-8138-4c3f-81cb-ab631bae2d3c"
+type = "deprecation"
+description = "deprecated `nr.util.functional.assure`"
+author = "@NiklasRosenstein"
+
+[[entries]]
+id = "e6a9e052-d69f-4e77-865a-acc82382d044"
+type = "feature"
+description = "add `nr.util.preconditions`"
+author = "@NiklasRosenstein"

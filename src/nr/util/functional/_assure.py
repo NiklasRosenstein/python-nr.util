@@ -1,20 +1,11 @@
 
 from __future__ import annotations
-import typing as t
-import typing_extensions as te
-
+import deprecated
 from nr.util.generic import T
-
-_Message: te.TypeAlias = 'str | t.Callable[[], str]'
-
-
-def _get_message(message: _Message) -> str:
-  if isinstance(message, str):
-    return message
-  else:
-    return message()
+from nr.util.preconditions import check_not_none, _Message, _get_message
 
 
+@deprecated.deprecated('use `nr.util.preconditions.check_not_none()` instead')
 def assure(v: T | None, msg: _Message | None = None) -> T:
   """ Assures that *v* is not `None` and returns it. If the value is in fact `None`, a {@link ValueError} will
   be raised raised. """
