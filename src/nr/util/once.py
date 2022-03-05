@@ -1,14 +1,10 @@
 
 from __future__ import annotations
-
-import deprecated
 import typing as t
-
 from nr.util.generic import T_co
-from ._supplier import Supplier
+from nr.util.types import Supplier
 
 
-@deprecated.deprecated('use `nr.util.once.Once` instead')
 class Once(Supplier[T_co]):
 
   def __init__(self, supplier: Supplier[T_co]) -> None:
@@ -28,7 +24,10 @@ class Once(Supplier[T_co]):
       self._cached = True
     return t.cast(T_co, self._value)
 
-  def get(self, resupply: bool = False) -> T_co:
-    if resupply:
+  def has_value(self) -> bool:
+    return self._cached
+
+  def get(self, force_refresh: bool = False) -> T_co:
+    if force_refresh:
       self._cached = False
     return self()

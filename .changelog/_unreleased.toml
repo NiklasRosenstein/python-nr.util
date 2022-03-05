@@ -9,3 +9,9 @@ id = "e6a9e052-d69f-4e77-865a-acc82382d044"
 type = "feature"
 description = "add `nr.util.preconditions`"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "352fb6b1-140d-45d5-920f-1fa5e30d7054"
+type = "deprecation"
+description = "move `Consumer`, `Predicate` and `Supplier` to `nr.util.types` (which are now ABCs instead of Protocls to allow them to have classmethods), move `Once` to `nr.util.once`"
+author = "@NiklasRosenstein"
