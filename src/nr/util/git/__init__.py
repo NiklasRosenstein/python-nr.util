@@ -390,8 +390,11 @@ class Git:
 
     return self.check_output(['git', 'ls-files']).decode().strip().splitlines()
 
-  def get_config(self, option: str) -> str | None:
-    return self.check_output(['git', 'config', option]).decode().strip()
+  def get_config(self, option: str, global_: bool = False) -> str | None:
+    command = ['git', 'config', option]
+    if global_:
+      command.insert(2, '--global')
+    return self.check_output(command).decode().strip()
 
   def get_file_contents(self, file: str, revision: str) -> bytes:
     """ Returns the contents of a file at the given revision. Raises a #FileNotFoundError if the file did not

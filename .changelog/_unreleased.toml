@@ -15,3 +15,9 @@ id = "352fb6b1-140d-45d5-920f-1fa5e30d7054"
 type = "deprecation"
 description = "move `Consumer`, `Predicate` and `Supplier` to `nr.util.types` (which are now ABCs instead of Protocls to allow them to have classmethods), move `Once` to `nr.util.once`"
 author = "@NiklasRosenstein"
+
+[[entries]]
+id = "2869ac69-edf2-448b-9c74-2e37ae6a5290"
+type = "feature"
+description = "add `global_` parameter to `nr.util.git.Git.get_config()` method"
+author = "@NiklasRosenstein"
