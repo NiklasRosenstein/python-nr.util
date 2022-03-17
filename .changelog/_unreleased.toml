@@ -1,0 +1,5 @@
+[[entries]]
+id = "9769c28f-00c7-4a65-879e-936aa8019720"
+type = "fix"
+description = "Fix `Stream.of_type()` type hints"
+author = "@NiklasRosenstein"

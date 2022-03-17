@@ -4,7 +4,7 @@ import functools
 import itertools
 import typing as t
 
-from nr.util.generic import T, T_co, U, R
+from nr.util.generic import T, T_co, U, U_co, R
 from nr.util.singleton import NotSet
 
 if t.TYPE_CHECKING:
@@ -280,7 +280,7 @@ class Stream(t.Generic[T_co], t.Iterable[T_co]):
 
     return Stream(func(x) for x in self._it)
 
-  def of_type(self, type: t.Type[T_co]) -> 'Stream[T_co]':
+  def of_type(self, type: t.Type[U_co]) -> 'Stream[U_co]':
     """
     Filters using #isinstance().
     """
