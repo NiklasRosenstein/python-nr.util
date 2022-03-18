@@ -1,0 +1,5 @@
+[[entries]]
+id = "c1efa3f3-cea2-4da3-8d24-8858b4b8c48f"
+type = "feature"
+description = "Add `nr.util.digraph.DiGraph.copy()` method"
+author = "@NiklasRosenstein"

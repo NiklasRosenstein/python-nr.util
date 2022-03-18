@@ -112,6 +112,17 @@ class DiGraph(t.Generic[K, N, E]):
 
     return self._get_node(node_id).successors.keys()
 
+  def copy(self) -> DiGraph[K, N, E]:
+    """ Return a copy of the graph. Note that the data is still the same, which may be undesirable if
+    it is intended to be mutable. """
+
+    new = type(self)()
+    new._nodes.update(self._nodes)
+    new._roots.update(self._roots)
+    new._leafs.update(self._leafs)
+    new._edges.update(self._edges)
+    return new
+
   # Internal
 
   def _get_node(self, node_id: K) -> '_Node[K, N]':
