@@ -4,38 +4,21 @@
 name: Python package
 
 on:
-  push:
-    branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
+  push: { branches: [ "develop" ] }
+  pull_request: { branches: [ "develop" ] }
 
 jobs:
-  build:
 
+  test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.x"]
-        python-tooling-version: ["3.10.2"]
-
+        python-version: [ "3.7", "3.8", "3.9", "3.10", "3.x" ]
     steps:
     - uses: actions/checkout@v2
-
-    - uses: gabrielfalcao/pyenv-action@v9
-      with:
-        default: "${{ matrix.python-tooling-version }}"
-        command: |
-          pip install -q -U pip pipx
-          pipx install slam-cli==1.0.0a13
-
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-
-    - name: Install
-      run: slam install --no-venv-check -q
-
-    - name: Run tests
-      run: slam test
+    - uses: NiklasRosenstein/slap@gha/install/v1
+    - uses: actions/setup-python@v2
+      with: { python-version: "${{ matrix.python-version }}" }
+    - run: slam install --no-venv-check
+    - run: slam test
