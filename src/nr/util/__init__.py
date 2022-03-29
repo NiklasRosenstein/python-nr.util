@@ -2,7 +2,7 @@
 """ General purpose utility library. """
 
 __author__ = 'Niklas Rosenstein <rosensteinniklas@gmail.com>'
-__version__ = "0.8.7"
+__version__ = "0.8.8"
 
 
 # TODO (@NiklasRosenstein): Remove these backwards compatibility imports in a major version bump
