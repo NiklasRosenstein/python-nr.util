@@ -1,0 +1,5 @@
+[[entries]]
+id = "5eea6f67-fed6-4b05-8853-9978d0c62c55"
+type = "feature"
+description = "add `nr.util.exceptions` module with `safe_str()` decorator function"
+author = "@NiklasRosenstein"
