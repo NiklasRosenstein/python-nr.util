@@ -8,24 +8,24 @@ readme = "readme.md"
 homepage = "https://github.com/NiklasRosenstein/python-nr.util"
 packages = [{ include="nr/util", from="src" }]
 
-  [tool.poetry.dependencies]
-  python = "^3.7"
-  deprecated = "^1.2.0"
-  typing-extensions = ">=3.0.0"
+[tool.poetry.dependencies]
+python = "^3.7"
+deprecated = "^1.2.0"
+typing-extensions = ">=3.0.0"
 
-  [tool.poetry.extras]
-  config = ["databind.json ^1.3.2"]
+[tool.poetry.extras]
+config = ["databind.json ^1.3.2"]
 
-  [tool.poetry.dev-dependencies]
-  "databind.json" = "^1.3.2"
-  mypy = "^0.931"
-  pandas = "*"
-  pytest = "^6.2.5"
-  PyYAML = "*"
-  types-deprecated = "^1.2.0"
-  types-python-dateutil = "*"
-  types-setuptools = "^57.4.9"
-  types-PyYAML = "*"
+[tool.poetry.dev-dependencies]
+"databind.json" = "^1.3.2"
+mypy = "^0.931"
+pandas = "*"
+pytest = "^6.2.5"
+PyYAML = "*"
+types-deprecated = "^1.2.0"
+types-python-dateutil = "*"
+types-setuptools = "^57.4.9"
+types-PyYAML = "*"
 
 [tool.slap]
 typed = true
@@ -38,3 +38,13 @@ check = "slap check"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.kraken.include]
+url = "git+https://github.com/NiklasRosenstein/kraken-templates.git"
+directory = "python/"
+
+[tool.kraken.task.checkFlake8]
+additional_args = [
+  "--per-file-ignores",
+  "src/nr/util/proxy/_base:E731"
+]
