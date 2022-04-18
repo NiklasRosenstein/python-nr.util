@@ -1,0 +1,5 @@
+[[entries]]
+id = "5753c1f2-5c53-4d7e-a25b-574b5a94710b"
+type = "feature"
+description = "Add `nr.util.url` module with the `Url` class"
+author = "@NiklasRosenstein"

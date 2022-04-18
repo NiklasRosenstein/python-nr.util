@@ -31,7 +31,7 @@ types-PyYAML = "*"
 typed = true
 
 [tool.slap.test]
-pytest = "pytest test/"
+pytest = "pytest test/ -vv"
 mypy = "MYPYPATH=src mypy src test --namespace-packages --explicit-package-bases"
 check = "slap check"
 
