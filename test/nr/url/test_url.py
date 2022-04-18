@@ -1,5 +1,6 @@
 
 import pytest
+
 from nr.util.url import Url
 
 

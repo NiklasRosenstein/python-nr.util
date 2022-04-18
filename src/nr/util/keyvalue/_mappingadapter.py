@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import typing as t
+
 from ._api import KeyValueStore
 
 V = t.TypeVar('V')

@@ -1,11 +1,13 @@
 
 from __future__ import annotations
+
 import contextlib
 import os
 import tempfile
 import typing as t
-import typing_extensions as te
 from pathlib import Path
+
+import typing_extensions as te
 
 StrPath: te.TypeAlias = 'str | Path'
 

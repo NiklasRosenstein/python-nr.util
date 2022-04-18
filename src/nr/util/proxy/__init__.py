@@ -4,12 +4,11 @@ Provides classes that proxy all operations to a delegate object, allowing to imp
 the object contained in a "variable" can be interchanged or different based on the async context or thread.
 """
 
-from ._base import get_name, get, BaseProxy
-from ._proxy import bind, is_bound, proxy, set_value, Proxy
-from ._stackable import empty, push, pop, StackableProxy
-from ._threadlocal import threadlocal, ThreadLocalProxy
-from ._contextlocal import contextlocal, ContextLocalProxy
-
+from ._base import BaseProxy, get, get_name
+from ._contextlocal import ContextLocalProxy, contextlocal
+from ._proxy import Proxy, bind, is_bound, proxy, set_value
+from ._stackable import StackableProxy, empty, pop, push
+from ._threadlocal import ThreadLocalProxy, threadlocal
 
 __all__ = [
   'get_name', 'get', 'BaseProxy',

@@ -19,10 +19,10 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-from typing import TextIO
 import codecs
 import io
 import sys
+from typing import TextIO
 
 
 class EncodedStreamReader(io.BufferedIOBase):

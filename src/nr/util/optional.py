@@ -1,7 +1,7 @@
 
 import typing as t
 
-from nr.util.generic import T, R
+from nr.util.generic import R, T
 
 if t.TYPE_CHECKING:
   from nr.util.stream import Stream

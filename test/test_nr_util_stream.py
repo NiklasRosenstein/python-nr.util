@@ -1,8 +1,9 @@
 
-import pytest
 import typing as t
-
 from numbers import Number
+
+import pytest
+
 from nr.util.stream import Stream
 
 

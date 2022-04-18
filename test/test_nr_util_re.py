@@ -1,6 +1,7 @@
 
-from nr.util.re import MatchFullError, match_full
 import pytest
+
+from nr.util.re import MatchFullError, match_full
 
 
 def test_match_full():

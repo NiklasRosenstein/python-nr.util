@@ -1,5 +1,6 @@
 
 import typing as t
+
 from nr.util.digraph import DiGraph, E, K, N
 
 

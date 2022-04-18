@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import typing as t
+
 from deprecated import deprecated
+
 from nr.util.generic import T
 
 

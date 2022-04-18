@@ -4,8 +4,8 @@ import logging
 import typing as t
 from dataclasses import dataclass, field
 
-from .ruleset import Rule, RuleConfigSet, RuleSet
 from .._scanner import Cursor, Scanner
+from .ruleset import Rule, RuleConfigSet, RuleSet
 
 T = t.TypeVar('T')
 U = t.TypeVar('U')

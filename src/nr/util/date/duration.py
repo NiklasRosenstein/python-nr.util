@@ -2,6 +2,7 @@
 import datetime
 import typing as t
 from dataclasses import dataclass
+
 from nr.util.re import MatchFullError, match_full
 
 if t.TYPE_CHECKING:

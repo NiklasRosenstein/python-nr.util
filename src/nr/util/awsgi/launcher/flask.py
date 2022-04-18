@@ -8,11 +8,12 @@ import os
 import typing as t
 from importlib import import_module
 
-from nr.util.process import spawn_daemon, replace_stdio, Pidfile
+from nr.util.process import Pidfile, replace_stdio, spawn_daemon
+
 from . import AWSGILauncher, BaseAWSGIConfig
 
 if t.TYPE_CHECKING:
-  import flask   # type: ignore
+  import flask  # type: ignore
 
 logger = logging.getLogger(__name__)
 

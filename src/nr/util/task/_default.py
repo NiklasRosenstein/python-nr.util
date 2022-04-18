@@ -13,9 +13,10 @@ import typing as t
 import uuid
 import weakref
 
-from . import _api as api
 from nr.util.atomic import AtomicCounter
 from nr.util.generic import T
+
+from . import _api as api
 
 logger = logging.getLogger(__name__)
 

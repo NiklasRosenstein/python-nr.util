@@ -4,10 +4,11 @@
 from __future__ import annotations
 
 import logging
+
 import typing_extensions as te
 
-from nr.util.terminal.colors import StyleManager
 from nr.util.singleton import NotSet
+from nr.util.terminal.colors import StyleManager
 
 
 def get_default_styles() -> StyleManager:

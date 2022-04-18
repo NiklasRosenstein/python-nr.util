@@ -1,8 +1,11 @@
 
 from __future__ import annotations
+
 import abc
 import typing as t
+
 import typing_extensions as te
+
 from nr.util.generic import T, T_co, T_contra
 
 if t.TYPE_CHECKING:

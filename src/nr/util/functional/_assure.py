@@ -1,8 +1,10 @@
 
 from __future__ import annotations
+
 import deprecated
+
 from nr.util.generic import T
-from nr.util.preconditions import check_not_none, _Message, _get_message
+from nr.util.preconditions import _get_message, _Message, check_not_none
 
 
 @deprecated.deprecated('use `nr.util.preconditions.check_not_none()` instead')

@@ -26,6 +26,11 @@ types-deprecated = "^1.2.0"
 types-python-dateutil = "*"
 types-setuptools = "^57.4.9"
 types-PyYAML = "*"
+isort = "^5.10.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.slap]
 typed = true
@@ -34,17 +39,22 @@ typed = true
 pytest = "pytest test/ -vv"
 mypy = "MYPYPATH=src mypy src test --namespace-packages --explicit-package-bases"
 check = "slap check"
+isort = "isort src/ test/ --check-only"
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.slap.run]
+fmt = "isort src/ test/"
 
-[tool.kraken.include]
-url = "git+https://github.com/NiklasRosenstein/kraken-templates.git"
-directory = "python/"
+[tool.isort]
+profile = "black"
+combine_as_imports = true
+line_length = 120
 
-[tool.kraken.task.checkFlake8]
-additional_args = [
-  "--per-file-ignores",
-  "src/nr/util/proxy/_base:E731"
-]
+# [tool.kraken.include]
+# url = "git+https://github.com/NiklasRosenstein/kraken-templates.git"
+# directory = "python/"
+
+# [tool.kraken.task.checkFlake8]
+# additional_args = [
+#   "--per-file-ignores",
+#   "src/nr/util/proxy/_base:E731"
+# ]

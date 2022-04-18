@@ -4,7 +4,8 @@ import io
 import re
 import typing as t
 from dataclasses import dataclass
-from .options import DatetimeComponentType, IFormatOption, FormatOptions
+
+from .options import DatetimeComponentType, FormatOptions, IFormatOption
 
 _T_datetime_format = t.TypeVar('_T_datetime_format', bound='_datetime_format')
 

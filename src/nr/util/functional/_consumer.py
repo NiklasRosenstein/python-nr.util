@@ -1,6 +1,7 @@
 
-import deprecated
 import typing as t
+
+import deprecated
 import typing_extensions as te
 
 from nr.util.generic import T_contra

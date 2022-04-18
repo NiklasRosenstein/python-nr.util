@@ -4,8 +4,8 @@
 from . import _chmod as chmod
 from ._atomic import atomic_swap, atomic_write
 from ._discovery import get_file_in_directory
-from ._walk import recurse_directory, walk_up
 from ._path import is_relative_to
+from ._walk import recurse_directory, walk_up
 
 __all__ = [
   'chmod',

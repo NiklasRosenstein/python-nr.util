@@ -1,8 +1,9 @@
 
 from __future__ import annotations
 
-import deprecated
 import typing as t
+
+import deprecated
 import typing_extensions as te
 
 from nr.util.generic import T_co, U

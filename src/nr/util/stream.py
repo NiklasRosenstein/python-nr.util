@@ -4,7 +4,7 @@ import functools
 import itertools
 import typing as t
 
-from nr.util.generic import T, T_co, U, U_co, R
+from nr.util.generic import R, T, T_co, U, U_co
 from nr.util.singleton import NotSet
 
 if t.TYPE_CHECKING:

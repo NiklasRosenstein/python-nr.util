@@ -3,6 +3,7 @@ import contextvars
 import typing as t
 
 from nr.util.generic import T
+
 from ._stackable import StackableProxy
 
 

@@ -1,8 +1,9 @@
 
 import typing as t
-import pytest
-from nr.util.parsing import Cursor, Token, RuleSet, Tokenizer, rules
 
+import pytest
+
+from nr.util.parsing import Cursor, RuleSet, Token, Tokenizer, rules
 
 ruleset = RuleSet()
 ruleset.rule('number', rules.regex_extract(r'\-?(0|[1-9]\d*)'))

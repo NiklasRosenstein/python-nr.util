@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 import typing as t
-import typing_extensions as te
 import weakref
+
+import typing_extensions as te
 
 from nr.util.generic import T
 

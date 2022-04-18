@@ -1,5 +1,5 @@
 
-from ._pkg_resources import iter_entrypoints, load_entrypoint, NoSuchEntrypointError
+from ._pkg_resources import NoSuchEntrypointError, iter_entrypoints, load_entrypoint
 from ._plugin_registry import PluginRegistry
 
 __all__ = [

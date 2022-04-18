@@ -16,13 +16,12 @@ import ctypes
 import io
 import json
 import re
-import shutil
 import shlex
+import shutil
 import subprocess
 import tempfile
 import traceback
 import typing as t
-
 
 if os.name == 'nt':
   import ctypes.wintypes as wintypes

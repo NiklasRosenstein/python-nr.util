@@ -3,7 +3,7 @@ import logging
 import threading
 import typing as t
 
-from nr.util.generic import T, R
+from nr.util.generic import R, T
 
 logger = logging.getLogger(__name__)
 Subscriber = t.Callable[['Refreshable[T]'], None]

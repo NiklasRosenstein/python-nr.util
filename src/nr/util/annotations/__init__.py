@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import types
 import typing as t
+
 import typing_extensions as te
 
 from nr.util.generic import T

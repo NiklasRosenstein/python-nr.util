@@ -1,10 +1,12 @@
 
 from __future__ import annotations
 
-import deprecated
 import typing as t
 
+import deprecated
+
 from nr.util.generic import T_co
+
 from ._supplier import Supplier
 
 

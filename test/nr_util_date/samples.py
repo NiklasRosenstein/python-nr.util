@@ -1,6 +1,8 @@
 
 import datetime
+
 import pandas as pd  # type: ignore[import]
+
 from nr.util.date.duration import duration
 
 # NOTE(NiklasRosenstein): Some formats below are commented out because they are not supported

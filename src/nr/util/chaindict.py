@@ -1,7 +1,7 @@
 
 import typing as t
 
-from nr.util.generic import T, K, V
+from nr.util.generic import K, T, V
 
 T_ChainDict = t.TypeVar('T_ChainDict', bound='ChainDict')
 _can_iteritems = lambda x: hasattr(x, 'items')

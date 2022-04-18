@@ -1,5 +1,6 @@
 
 import pytest
+
 from nr.util.keyvalue.sqlite import SqliteDatastore
 
 

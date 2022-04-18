@@ -1,5 +1,5 @@
 
-from ._digraph import DiGraph, UnknownEdgeError, UnknownNodeError, E, K, N
+from ._digraph import DiGraph, E, K, N, UnknownEdgeError, UnknownNodeError
 
 __all__ = [
   'remove_with_predecessors',

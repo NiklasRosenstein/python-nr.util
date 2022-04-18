@@ -7,6 +7,7 @@ Note that anything accepting #Arg instances must explicitly implement support.
 from __future__ import annotations
 
 import typing as t
+
 import typing_extensions as te
 
 from nr.util.generic import T

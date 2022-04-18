@@ -6,7 +6,6 @@ import typing as t
 from pathlib import Path
 
 import databind.json  # type: ignore[import]
-import logging
 import yaml  # type: ignore[import]
 from databind.core.annotations import collect_unknowns  # type: ignore[import]
 

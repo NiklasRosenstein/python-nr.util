@@ -4,8 +4,9 @@
 from __future__ import annotations
 
 import logging
-import pkg_resources
 import typing as t
+
+import pkg_resources
 import typing_extensions as te
 
 from nr.util.generic import T

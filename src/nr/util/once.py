@@ -1,6 +1,8 @@
 
 from __future__ import annotations
+
 import typing as t
+
 from nr.util.generic import T_co
 from nr.util.types import Supplier
 
