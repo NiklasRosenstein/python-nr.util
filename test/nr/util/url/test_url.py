@@ -24,3 +24,17 @@ def test__Url__str__produces_correct_urls():
 
 def test__Url__str__escapes_special_characters():
   assert str(Url('http', 'example.org', port=8411, username='user name')) == 'http://user%20name:@example.org:8411'
+
+
+def test__Url__netloc__and_other_properties():
+  url = Url.of('https://user:password@host:1337/bar')
+  assert url == Url('https', 'host', '/bar', username='user', password='password', port=1337)
+  assert url.netloc == 'user:password@host:1337'
+  assert url.auth == 'user:password'
+  assert url.netloc_no_auth == 'host:1337'
+
+  url = Url.of('https://host/bar')
+  assert url == Url('https', 'host', '/bar')
+  assert url.netloc == 'host'
+  assert url.auth is None
+  assert url.netloc_no_auth == 'host'

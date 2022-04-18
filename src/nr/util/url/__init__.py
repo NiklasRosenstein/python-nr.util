@@ -27,13 +27,31 @@ class Url:
 
   @property
   def netloc(self) -> str:
-    parts = []
+    """ Returns the entire network location with auth and port. """
+
+    auth = self.auth
+    if auth:
+      return f'{self.auth}@{self.netloc_no_auth}'
+
+    return self.netloc_no_auth
+
+  @property
+  def auth(self) -> str | None:
+    """ Returns just the auth part of the network location."""
+
     if self.username or self.password:
-      parts.append(f'{urllib.parse.quote(self.username or "")}:{urllib.parse.quote(self.password or "")}@')
-    parts.append(self.hostname)
-    if self.port:
-      parts.append(f':{self.port}')
-    return ''.join(parts)
+      return f'{urllib.parse.quote(self.username or "")}:{urllib.parse.quote(self.password or "")}'
+
+    return None
+
+  @property
+  def netloc_no_auth(self) -> str:
+    """ Returns the network location without the auth part."""
+
+    if self.port is None:
+      return self.hostname
+
+    return f'{self.hostname}:{self.port}'
 
   @staticmethod
   def of(url: str) -> Url:

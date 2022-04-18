@@ -1,0 +1,5 @@
+[[entries]]
+id = "c915b7fa-7855-4fb1-a3e0-74d4102a7925"
+type = "improvement"
+description = "Add `Url.netloc_no_auth` and `Url.auth` properties (`nr.util.url` module0"
+author = "@NiklasRosenstein"
