@@ -1,0 +1,5 @@
+[[entries]]
+id = "f8a676c0-3bc6-4f86-babd-6d77a06f24e6"
+type = "improvement"
+description = "The `ChainMap` class now provides a public API to its inner dicts and deleted keys"
+author = "@NiklasRosenstein"

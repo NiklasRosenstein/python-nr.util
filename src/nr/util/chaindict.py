@@ -13,36 +13,49 @@ class ChainDict(t.MutableMapping[K, V]):
   constructor, none will be mutated through any actions on this dictionary.
   """
 
-  def __init__(self, main: t.MutableMapping[K, V], *others: t.Mapping[K, V]) -> None:
-    self._main = main
-    self._dicts: t.List[t.Mapping[K, V]] = [t.cast(t.Mapping[K, V], main)] + list(others)
-    self._deleted: t.Set[K] = set()
+  writeable_dict: t.MutableMapping[K, V]
+  readable_dicts: t.List[t.Mapping[K, V]]
+  deleted_keys: t.Set[K]
+
+  def __init__(
+    self,
+    main: t.MutableMapping[K, V],
+    *others: t.Mapping[K, V],
+    deleted_keys: t.Optional[t.Collection[K]] = None,
+  ) -> None:
+    self.writeable_dict = main
+    self.readable_dicts = list(others)
+    self.deleted_keys: t.Set[K] = set() if deleted_keys is None else set(deleted_keys)
     self._in_repr = False
 
+  def __readable(self) -> t.Iterator[t.Mapping[K, V]]:
+    yield self.writeable_dict
+    yield from self.readable_dicts
+
   def __contains__(self, key: t.Any) -> bool:
-    if key not in self._deleted:
-      for d in self._dicts:
+    if key not in self.deleted_keys:
+      for d in self.__readable():
         if key in d:
           return True
     return False
 
   def __getitem__(self, key: K) -> V:
-    if key not in self._deleted:
-      for d in self._dicts:
+    if key not in self.deleted_keys:
+      for d in self.__readable():
         try: return d[key]
         except KeyError: pass
     raise KeyError(key)
 
   def __setitem__(self, key: K, value: V) -> None:
-    self._main[key] = value
-    self._deleted.discard(key)
+    self.writeable_dict[key] = value
+    self.deleted_keys.discard(key)
 
   def __delitem__(self, key: K) -> None:
     if key not in self:
       raise KeyError(key)
-    try: self._main.pop(key)
+    try: self.writeable_dict.pop(key)
     except KeyError: pass
-    self._deleted.add(key)
+    self.deleted_keys.add(key)
 
   def __iter__(self) -> t.Iterator[K]:
     return self.keys()
@@ -96,23 +109,23 @@ class ChainDict(t.MutableMapping[K, V]):
     return value
 
   def popitem(self) -> t.Tuple[K, V]:
-    if self._main:
-      key, value = self._main.popitem()
-      self._deleted.add(key)
+    if self.writeable_dict:
+      key, value = self.writeable_dict.popitem()
+      self.deleted_keys.add(key)
       return key, value
-    for d in self._dicts:
+    for d in self.__readable():
       for key in d.keys():
-        if key not in self._deleted:
-          self._deleted.add(key)
+        if key not in self.deleted_keys:
+          self.deleted_keys.add(key)
           return key, d[key]
     raise KeyError('popitem(): dictionary is empty')
 
   def clear(self) -> None:
-    self._main.clear()
-    self._deleted.update(self.keys())
+    self.writeable_dict.clear()
+    self.deleted_keys.update(self.keys())
 
   def copy(self: T_ChainDict) -> T_ChainDict:
-    return type(self)(self._main, *self._dicts[1:])
+    return type(self)(self.writeable_dict, *self.readable_dicts, deleted_keys=self.deleted_keys)
 
   def setdefault(self, key: K, value: V) -> V:  # type: ignore  # TODO (NiklasRosenstein)
     try:
@@ -134,24 +147,24 @@ class ChainDict(t.MutableMapping[K, V]):
 
   def keys(self):
     seen = set()
-    for d in self._dicts:
+    for d in self.__readable():
       for key in d.keys():
-        if key not in seen and key not in self._deleted:
+        if key not in seen and key not in self.deleted_keys:
           yield key
           seen.add(key)
 
   def values(self):
     seen = set()
-    for d in self._dicts:
+    for d in self.__readable():
       for key, value in d.items():
-        if key not in seen and key not in self._deleted:
+        if key not in seen and key not in self.deleted_keys:
           yield value
           seen.add(key)
 
   def items(self):
     seen = set()
-    for d in self._dicts:
+    for d in self.__readable():
       for key, value in d.items():
-        if key not in seen and key not in self._deleted:
+        if key not in seen and key not in self.deleted_keys:
           yield key, value
           seen.add(key)
