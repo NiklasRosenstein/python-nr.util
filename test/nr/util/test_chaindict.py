@@ -38,3 +38,7 @@ def test_ChainDict():
   assert b == {'bar': 'spam'}
   assert c == {}
   assert d == {}
+  assert d.copy() == {}
+
+  assert d.deleted_keys == {'foo', 'bar'}
+  assert d.copy().deleted_keys == {'foo', 'bar'}
