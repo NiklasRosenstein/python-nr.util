@@ -62,7 +62,7 @@ Style.RESET = Style(attrs='reset')
 class StyleManager:
   """ Allows you to register styles and format text using HTML-style tags. """
 
-  TAG_EXPR = r'<([^>=]+)([^>]*)>(.*)</\1>'
+  TAG_EXPR = r'<([^>=]+)([^>]*)>(.*?)</\1>'
 
   def __init__(self) -> None:
     self._styles: dict[str, Style] = {}

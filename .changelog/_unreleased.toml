@@ -1,0 +1,8 @@
+[[entries]]
+id = "60662c71-d794-426a-ae38-0b2e94a4093b"
+type = "fix"
+description = "Fix an issue with multiple of the same, non-nested HTML tags are present and parsed incorrectly in `nr.util.terminal.colors.StyleManager.format()`"
+author = "@NiklasRosenstein"
+issues = [
+    "https://github.com/NiklasRosenstein/python-nr.util/issues/2",
+]
