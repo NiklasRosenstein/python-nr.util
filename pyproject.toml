@@ -12,12 +12,12 @@ packages = [{ include="nr/util", from="src" }]
 python = "^3.7"
 deprecated = "^1.2.0"
 typing-extensions = ">=3.0.0"
+"databind.json" = {version = "^1.3.2", optional = true}
 
 [tool.poetry.extras]
-config = ["databind.json ^1.3.2"]
+config = ["databind.json"]
 
 [tool.poetry.dev-dependencies]
-"databind.json" = "^1.3.2"
 mypy = "^0.931"
 pandas = "*"
 pytest = "^6.2.5"
