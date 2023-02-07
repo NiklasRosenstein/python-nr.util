@@ -2,7 +2,7 @@
 """ General purpose utility library. """
 
 __author__ = 'Niklas Rosenstein <rosensteinniklas@gmail.com>'
-__version__ = "0.8.12"
+__version__ = "0.8.13"
 
 
 from .chaindict import ChainDict
